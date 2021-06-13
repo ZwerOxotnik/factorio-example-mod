@@ -5,13 +5,17 @@
 ]]
 
 local module = {}
-remote.add_interface("disable-another-mod", {}) -- trying to disable another mod
+local mod_name = "disable-another-mod"
+
+remote.remove_interface(mod_name)
+remote.add_interface(mod_name, {}) -- trying to disable another mod
 
 
 -- Reversly using this method :)
 -- Remove garbage
 module.add_remote_interface = function()
-	remote.remove_interface("disable-another-mod")
+	remote.remove_interface(mod_name)
+	mod_name = nil
 end
 
 
