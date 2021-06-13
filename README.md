@@ -105,6 +105,7 @@ Notes
 * Don't restart your game if you've changed files for control stage
 * If you want to develop complex/big project then you'll probably try [Factorio-luacheckrc](https://github.com/Nexela/Factorio-luacheckrc) with a [GitHub action](https://github.com/Roang-zero1/factorio-mod-luacheck) but you have to mantain .luacheckrc file
 * I recommend to use [notepad++](https://notepad-plus-plus.org) when you work with data and [notepad2](https://github.com/zufuliu/notepad2) for hot fixes. For all other cases use any IDE or code editor (e.g.: [Visual Studio Code](https://code.visualstudio.com/))
+* You can store data in entities to support data in blueprints (see an example in [LuaCombinator 3](https://mods.factorio.com/mod/LuaCombinator3))
 
 Next updates
 ------------
