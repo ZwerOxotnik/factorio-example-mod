@@ -64,6 +64,7 @@ What it can do
 * Use built-in error handling of commands
 * Use modular structure
 * Remotely and safely disable your mod
+* Publish your mod on mod portal via GitHub tags
 
 What it enables you to do
 -------------------------
@@ -72,6 +73,8 @@ What it enables you to do
 * Make "isolated" modules
 * Expand your modules
 * More possibilities to control logic
+* Fastly publish your mod on mod portal
+* Use other's modules/code without adaptation
 
 Useful stuff
 ------------
