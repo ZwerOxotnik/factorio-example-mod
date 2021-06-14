@@ -3,24 +3,58 @@
 local all_commands = {} -- commands from other modules
 local module = {} -- this module
 
--- change this \/ in your mod!
--- Don't use symbols like '-' etc (it'll break pattern of regular expressions)
-local MOD_SHORT_NAME = "em_"
 local MAX_INPUT_LENGTH = 500 -- set any number
-local SWITCHABLE_COMMANDS = require("const-commands")
-local CONST_COMMANDS = require("switchable-commands")
+local CONST_COMMANDS = require("const-commands")
+local SWITCHABLE_COMMANDS = require("switchable-commands")
 
 
 local function trim(s)
 	return s:match'^%s*(.*%S)' or ''
 end
 
+local function remove_command(command_name)
+	local is_deleted = commands.remove_command(MOD_SHORT_NAME .. command_name)
+		if is_deleted == false then
+			commands.remove_command(command_name)
+		end
+end
+
 -- Sends message to a player or server
 local function print_to_caller(message, player_index)
-	if player_index == 0 then
+	if game == nil or player_index == nil or player_index == 0 then
 		print(message) -- this message for server
 	else
-		game.get_player(player_index).print(message)
+		local player = game.get_player(player_index)
+		if player and player.valid then
+			player.print(message)
+		end
+	end
+end
+
+local function disable_setting(error_message, player_index, key_command)
+	print_to_caller(error_message, player_index)
+
+	local is_message_sended = false
+	if game then
+		for _, player in pairs(game.connected_players) do
+			if player.valid and player.admin then
+				player.print(error_message)
+				is_message_sended = true
+			end
+		end
+	end
+	if is_message_sended == false then
+		log(error_message)
+	end
+
+	-- Turns off the command
+	if key_command then
+		local setting_name = MOD_SHORT_NAME .. key_command
+		if settings.global[setting_name] then
+			settings.global[setting_name] = {
+				value = false
+			}
+		end
 	end
 end
 
@@ -34,9 +68,15 @@ local function add_custom_command(command_settings, original_func, key_command)
 	local input_type = input_types[command_settings.input_type]
 	local is_allowed_empty_args = command_settings.is_allowed_empty_args
 	local command_name = command_settings.name
-	local command_description = command_settings.description
+	if commands.commands[command_name] then
+		command_name = MOD_SHORT_NAME .. command_name
+		if commands.commands[command_name] then
+			return false
+		end
+	end
 
-	commands.add_command(command_settings.name, command_description, function(cmd)
+	local command_description = command_settings.description
+	commands.add_command(command_name, command_description, function(cmd)
 		if cmd.player_index == 0 then
 			if command_settings.allow_for_server == false then
 				print({"prohibited-server-command"})
@@ -91,30 +131,14 @@ local function add_custom_command(command_settings, original_func, key_command)
 
 		-- error handling
 		local is_ok, error_message = pcall(original_func, cmd)
-		if is_ok then return end
-		print_to_caller(error_message, cmd.player_index)
-
-		local is_message_sended = false
-		for _, player in pairs(game.connected_players) do
-			if player.valid and player.admin then
-				player.print(error_message)
-				is_message_sended = true
-			end
-		end
-		if is_message_sended == false then
-			log(error_message)
-		end
-
-		-- Turns off the command
-		if key_command then
-			local setting_name = MOD_SHORT_NAME .. key_command
-			if settings.global[setting_name] then
-				settings.global[setting_name] = {
-					value = false
-				}
-			end
+		if is_ok then
+			return
+		else
+			disable_setting(error_message, cmd.player_index, key_command)
 		end
 	end)
+
+	return true
 end
 
 module.handle_custom_commands = function(module)
@@ -140,11 +164,18 @@ module.handle_custom_commands = function(module)
 		end
 
 		if setting == nil then
-			add_custom_command(command_settings, func)
+			local is_added = add_custom_command(command_settings, func)
+			if is_added == false then
+				log(script.level.mod_name .. " can't add command \"" .. command_settings.name .. "\"")
+			end
 		elseif setting.value then
-			add_custom_command(command_settings, func, key)
+			local is_added = add_custom_command(command_settings, func, key)
+			if is_added == false then
+				local message = script.level.mod_name .. " can't add command \"" .. command_settings.name .. "\""
+				disable_setting(message, nil, key)
+			end
 		else
-			commands.remove_command(command_settings.name)
+			remove_command(command_settings.name)
 		end
 	end
 
@@ -172,17 +203,24 @@ local function on_runtime_mod_setting_changed(event)
 	local command_settings = SWITCHABLE_COMMANDS[command_name] or {}
 	local state = settings.global[event.setting].value
 	command_settings.name = command_settings.name or command_name
-	if state then
-		game.print("Added command: " .. command_settings.name or command_name)
-		add_custom_command(command_settings, func, command_name)
+	if state == true then
+		local is_added = add_custom_command(command_settings, func, command_name)
+		if is_added then
+			game.print("Added command: " .. command_settings.name or command_name)
+		else
+			local message = script.level.mod_name .. " can't add command \"" .. command_settings.name .. "\""
+			disable_setting(message, nil, command_name)
+		end
 	else
+		remove_command(command_settings.name or command_name)
 		game.print("Removed command: " .. command_settings.name or command_name)
-		commands.remove_command(command_settings.name or command_name)
 	end
+
+	return true
 end
 
 -- Adds settings for commands, so we can disable commands by settings
-module.set_settings = function()
+module.create_settings = function()
 	local new_settings = {}
 	for key, command in pairs(SWITCHABLE_COMMANDS) do
 		local command_name = command.name or key

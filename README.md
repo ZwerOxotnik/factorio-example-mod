@@ -60,6 +60,7 @@ What it can do
 
 * Filter parameters of commands
 * Add switchable commands via map settings
+* Double check of commands
 * Use built-in error handling of commands
 * Use modular structure
 * Remotely and safely disable your mod
@@ -92,11 +93,12 @@ Stuff used
 How to start?
 ------------
 
+* Change [info.json](info.json), [defines.lua](defines.lua)
 * Replace my nickname, this project in links with your stuff almost everywhere
-* **Change** settings in [models/command-wrapper/control.lua](models/command-wrapper/control.lua)
 * Remove unnecessary code, files in /models and create a file there with similar structure in the folder
 * Handle files in [control.lua](control.lua)
 * **Change or delete** .github/ISSUE_TEMPLATE/*
+* Change settings in [models/command-wrapper/control.lua](models/command-wrapper/control.lua) if you want
 
 Notes
 -----

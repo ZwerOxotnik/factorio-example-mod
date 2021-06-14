@@ -1,6 +1,7 @@
 -- See https://wiki.factorio.com/Tutorial:Mod_settings#Reading_settings
 
-require("models/command-wrapper/control").set_settings() -- Adds switchable commands
+require("defines")
+require("models/command-wrapper/control").create_settings() -- Adds switchable commands
 
 -- Just an example
 -- data:extend({

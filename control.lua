@@ -2,7 +2,7 @@
 -- Don't init if it's a campaign
 if script.level.campaign_name then return end
 
-
+require("defines")
 local event_handler = require("event_handler")
 local modules = {}
 modules.command_wrapper = require("models/command-wrapper/control")

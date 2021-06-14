@@ -15,4 +15,5 @@ What it can do
 * Filter parameters of commands
 * Add switchable commands via map settings
 * Use built-in error handling of commands
+* Double check of commands
 * Has simple integration (4+ lines)
