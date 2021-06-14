@@ -119,6 +119,7 @@ Next updates
 * More simplification, integrations, examples
 * More examples of particular cases on all stages
 * Support of [SimpleAPI](https://mods.factorio.com/mod/diplomacy/discussion/60c1eb9177457f7dd7943e14) (diplomacy, money, chat, etc)
+* Probably, I'll add [factorio-mod-luacheck](https://github.com/Roang-zero1/factorio-mod-luacheck)
 * Etc
 
 Optional Dependencies
