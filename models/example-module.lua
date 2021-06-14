@@ -45,7 +45,7 @@ local function on_game_created_from_scenario(event)
 end
 
 
-local function delete_UI_command(cmd)
+local function delete_example_UI_command(cmd)
 	if cmd.player_index == 0 then
 		print("Deleted UIs")
 	else
@@ -121,7 +121,7 @@ module.events = {
 -- [optional]
 -- Check folder "command-wrapper"
 module.commands = {
-	delete_UI = delete_UI_command,
+	delete_example_UI = delete_example_UI_command,
 }
 
 return module

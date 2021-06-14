@@ -15,5 +15,5 @@ Returns tables of commands without functions as command "settings". All paramete
 ]]--
 
 return {
-	delete_UI = {name = "delete-UI", description = {"example-mod-commands.delete-UI"}}, -- See example-module.lua
+	delete_example_UI = {name = "delete-example-UI", description = {"example-mod-commands.delete-example-UI"}}, -- See example-module.lua
 }
