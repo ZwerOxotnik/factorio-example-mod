@@ -69,7 +69,7 @@ What it can do
 What it enables you to do
 -------------------------
 
-* Make switchable, simpler and safer [coommands](models/command-wrapper/README.md)
+* Make switchable, simpler and safer [commands](models/command-wrapper/README.md)
 * Make "isolated" modules
 * Expand your modules
 * More possibilities to control logic
