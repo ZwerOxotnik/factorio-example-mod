@@ -5,6 +5,7 @@
     "svizzini.factorio-lua-api-autocomplete",
     "coenraads.bracket-pair-colorizer-2",
     "sumneko.lua",
-    "davidanson.vscode-markdownlint"
+    "davidanson.vscode-markdownlint",
+    "editorconfig.editorconfig"
   ]
 }
