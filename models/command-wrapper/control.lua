@@ -15,10 +15,11 @@ end
 
 ---@return boolean
 local function remove_command(command_name)
-	local is_deleted = commands.remove_command(MOD_SHORT_NAME .. command_name)
-		if is_deleted == false then
-			return commands.remove_command(command_name)
-		end
+	if commands.remove_command(MOD_SHORT_NAME .. command_name) then
+		return true
+	else
+		return commands.remove_command(command_name)
+	end
 end
 
 ---@param message string
