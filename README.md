@@ -1,6 +1,5 @@
 **[Notes](#notes)** |
 **[Contributing](#contributing)** |
-**[Disclaimer](#disclaimer)** |
 **[License](#license)**
 
 ---
