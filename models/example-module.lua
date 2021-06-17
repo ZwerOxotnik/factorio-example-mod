@@ -46,7 +46,7 @@ end
 
 
 local function delete_example_UI_command(cmd)
-	if cmd.player_index == 0 then
+	if cmd.player_index == 0 then -- server
 		print("Deleted UIs")
 	else
 		local player = game.get_player(cmd.player_index)
