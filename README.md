@@ -92,6 +92,8 @@ Stuff used
 * Factorio's event handler (See Factorio's folder `..\data\core\lualib\event_handler.lua`)
 * [git](https://git-scm.com/downloads) - version control system
 * [Visual Studio Code](https://code.visualstudio.com/) - code editor
+* [Lua Language Server](https://github.com/sumneko/lua-language-server) ([Setting without VSCode](https://github.com/sumneko/lua-language-server/wiki/Setting-without-VSCode))
+* [EmmyLua Annotation](https://github.com/sumneko/lua-language-server/wiki/EmmyLua-Annotations)
 * Some ZwerOxotnik's code
 
 How to start?
@@ -107,12 +109,11 @@ How to start?
 Notes
 -----
 
-* There are mods that might help you (e.g.: [Brush tools](https://mods.factorio.com/mod/brush-tools), [Mod generator](https://github.com/ZwerOxotnik/Mod-generator) etc)
+* There are mods/tools that might help you [Factorio Library](https://mods.factorio.com/mod/flib), (e.g.: [Rusty's Locale Utilities](https://mods.factorio.com/mod/rusty-locale), [Big Data String Libary](https://mods.factorio.com/mod/big-data-string), [Brush tools](https://mods.factorio.com/mod/brush-tools), [Mod generator](https://github.com/ZwerOxotnik/Mod-generator) etc)
 * Don't restart your game if you've changed files for control stage
 * If you want to develop complex/big project then you'll probably try [Factorio-luacheckrc](https://github.com/Nexela/Factorio-luacheckrc) with a [GitHub action](https://github.com/Roang-zero1/factorio-mod-luacheck) but you have to mantain .luacheckrc file
 * I recommend to use [notepad++](https://notepad-plus-plus.org) when you work with data and [notepad2](https://github.com/zufuliu/notepad2) for hot fixes. For all other cases use any IDE or code editor (e.g.: [Visual Studio Code](https://code.visualstudio.com/))
 * You can store data in entities to support data in blueprints (see an example in [LuaCombinator 3](https://mods.factorio.com/mod/LuaCombinator3))
-* I should add EmmyLua annotations in this mod
 
 Next updates
 ------------

@@ -1,24 +1,28 @@
--- This template from https://github.com/ZwerOxotnik/cc-template
+-- Source: https://github.com/ZwerOxotnik/factorio-example-mod
 
+---@type table<string, table>
 local all_commands = {} -- commands from other modules
-local module = {} -- this module
+local module = {}
 
 local MAX_INPUT_LENGTH = 500 -- set any number
 local CONST_COMMANDS = require("const-commands")
 local SWITCHABLE_COMMANDS = require("switchable-commands")
 
-
+---@param s string
 local function trim(s)
 	return s:match'^%s*(.*%S)' or ''
 end
 
+---@return boolean
 local function remove_command(command_name)
 	local is_deleted = commands.remove_command(MOD_SHORT_NAME .. command_name)
 		if is_deleted == false then
-			commands.remove_command(command_name)
+			return commands.remove_command(command_name)
 		end
 end
 
+---@param message string
+---@param player_index? number
 -- Sends message to a player or server
 local function print_to_caller(message, player_index)
 	if game == nil or player_index == nil or player_index == 0 then
@@ -31,7 +35,10 @@ local function print_to_caller(message, player_index)
 	end
 end
 
-local function disable_setting(error_message, player_index, key_command)
+---@param error_message string
+---@param player_index? number
+---@param command_name string
+local function disable_setting(error_message, player_index, command_name)
 	print_to_caller(error_message, player_index)
 
 	local is_message_sended = false
@@ -48,8 +55,8 @@ local function disable_setting(error_message, player_index, key_command)
 	end
 
 	-- Turns off the command
-	if key_command then
-		local setting_name = MOD_SHORT_NAME .. key_command
+	if command_name then
+		local setting_name = MOD_SHORT_NAME .. command_name
 		if settings.global[setting_name] then
 			settings.global[setting_name] = {
 				value = false
@@ -64,7 +71,11 @@ local input_types = {
 	player = player_input_type,
 	team = team_input_type
 }
-local function add_custom_command(command_settings, original_func, key_command)
+
+---@param original_func function
+---@param command_name? string
+---@return boolean
+local function add_custom_command(command_settings, original_func, command_name)
 	local input_type = input_types[command_settings.input_type]
 	local is_allowed_empty_args = command_settings.is_allowed_empty_args
 	local command_name = command_settings.name
@@ -134,7 +145,7 @@ local function add_custom_command(command_settings, original_func, key_command)
 		if is_ok then
 			return
 		else
-			disable_setting(error_message, cmd.player_index, key_command)
+			disable_setting(error_message, cmd.player_index, command_name)
 		end
 	end)
 
@@ -155,12 +166,12 @@ module.handle_custom_commands = function(module)
 	end
 	table.insert(all_commands, module.commands)
 
-	for key, func in pairs(module.commands) do
-		local command_settings = SWITCHABLE_COMMANDS[key] or CONST_COMMANDS[key] or {}
-		command_settings.name = command_settings.name or key
+	for command_name, func in pairs(module.commands) do
+		local command_settings = SWITCHABLE_COMMANDS[command_name] or CONST_COMMANDS[command_name] or {}
+		command_settings.name = command_settings.name or command_name
 		local setting = nil
-		if SWITCHABLE_COMMANDS[key] then
-			setting = settings.global[MOD_SHORT_NAME .. key]
+		if SWITCHABLE_COMMANDS[command_name] then
+			setting = settings.global[MOD_SHORT_NAME .. command_name]
 		end
 
 		if setting == nil then
@@ -169,10 +180,10 @@ module.handle_custom_commands = function(module)
 				log(script.level.mod_name .. " can't add command \"" .. command_settings.name .. "\"")
 			end
 		elseif setting.value then
-			local is_added = add_custom_command(command_settings, func, key)
+			local is_added = add_custom_command(command_settings, func, command_name)
 			if is_added == false then
 				local message = script.level.mod_name .. " can't add command \"" .. command_settings.name .. "\""
-				disable_setting(message, nil, key)
+				disable_setting(message, nil, command_name)
 			end
 		else
 			remove_command(command_settings.name)
@@ -182,6 +193,8 @@ module.handle_custom_commands = function(module)
 	return true
 end
 
+---@param command_name string original command name
+---@return function
 local function find_func_by_command_name(command_name)
 	for _, some_commands in pairs(all_commands) do
 		local func = some_commands[command_name]
@@ -191,6 +204,7 @@ local function find_func_by_command_name(command_name)
 	end
 end
 
+---@return boolean
 local function on_runtime_mod_setting_changed(event)
 	if event.setting_type ~= "runtime-global" then return end
 	if string.find(event.setting, '^' .. MOD_SHORT_NAME) ~= 1 then return end
@@ -238,6 +252,7 @@ module.create_settings = function()
 	end
 end
 
+---@type table<number, function>
 module.events = {
 	[defines.events.on_runtime_mod_setting_changed] = on_runtime_mod_setting_changed
 }

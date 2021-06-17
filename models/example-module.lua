@@ -94,6 +94,8 @@ end)
 module.update_global_data_on_disabling = update_global_data -- for safe disabling of this mod
 
 
+
+---@type table<number, function>
 -- [optional]
 -- All events of https://lua-api.factorio.com/latest/events.html#All%20events except on_nth_tick
 module.events = {
@@ -108,6 +110,7 @@ module.events = {
 	-- [defines.events.on_gui_value_changed] = on_gui_value_changed, -- please, don't use it. It impacts UPS significantly
 }
 
+---@type table<number, function>
 -- [optional]
 -- module.on_nth_tick = {
 -- 	[50] = function()
@@ -118,8 +121,10 @@ module.events = {
 -- }
 
 
+
+---@type table<string, function>
 -- [optional]
--- Check folder "command-wrapper"
+-- Check "command-wrapper" folder
 module.commands = {
 	delete_example_UI = delete_example_UI_command,
 }

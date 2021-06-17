@@ -1,4 +1,12 @@
 ﻿---------------------------------------------------------------------------------------------------
+Version: 0.2.2
+Date: 2021-06-17
+  Changes:
+    - Added some info
+    - Added EmmyLua Annotations
+    - Refactored slightly
+    - Slightly changed control.lua
+---------------------------------------------------------------------------------------------------
 Version: 0.2.1
 Date: 2021-06-14
   Changes:

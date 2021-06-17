@@ -48,6 +48,7 @@ end)
 module.update_global_data_on_disabling = update_global_data -- for safe disabling
 
 
+---@type table<number, function>
 -- All events of https://lua-api.factorio.com/latest/events.html#All%20events except on_nth_tick
 -- [optional]
 module.events = {
@@ -62,8 +63,9 @@ module.events = {
 }
 
 
--- Check folder "command-wrapper"
+---@type table<string, function>
 -- [optional]
+-- Check folder "command-wrapper"
 module.commands = {
 	-- set_spawn = set_spawn_command, -- Delete this example
 }
