@@ -1,12 +1,4 @@
 {
-    "auto-run-command.rules": [
-
-        {
-            "condition": "always",
-            "command": "gitlens.pullRepositories",
-            "message": "Downloading files from gits"
-        }
-    ],
     "lua.targetVersion": "5.2",
     "Lua.diagnostics.globals": [
         "global",
@@ -22,5 +14,22 @@
         "commands",
         "log"
     ],
-    "Lua.runtime.version": "Lua 5.2"
+    "Lua.runtime.version": "Lua 5.2",
+    "Lua.workspace.ignoreDir": [
+        ".vscode",
+        ".github",
+        "locale"
+    ],
+		"Lua.telemetry.enable": false,
+		"Lua.runtime.builtin": {
+			"table": "enable",
+			"math": "enable",
+			"string": "enable",
+			"io": "disable",
+			"jit": "disable"
+		},
+		"Lua.intelliSense.searchDepth": 3,
+		"Lua.hint.enable": true,
+		"Lua.diagnostics.workspaceDelay": 50,
+		"git.autofetch": "all"
 }
