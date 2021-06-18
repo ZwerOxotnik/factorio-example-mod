@@ -1,12 +1,15 @@
 -- Source: https://github.com/ZwerOxotnik/factorio-example-mod
 
+
 ---@type table<string, table>
 local all_commands = {} -- commands from other modules
 local module = {}
 
+
 local MAX_INPUT_LENGTH = 500 -- set any number
 local CONST_COMMANDS = require("const-commands")
 local SWITCHABLE_COMMANDS = require("switchable-commands")
+
 
 ---@param s string
 local function trim(s)
@@ -35,6 +38,7 @@ local function print_to_caller(message, player_index)
 		end
 	end
 end
+
 
 ---@param error_message string
 ---@param player_index? number

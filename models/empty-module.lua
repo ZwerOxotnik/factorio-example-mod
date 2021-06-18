@@ -2,22 +2,26 @@
 local module = {}
 
 
--- Global data
--- ###########
+--#region Global data
 --local players_data
--- ###########
+--#endregion
 
 
--- Constants
--- #########
+--#region Constants
 --local ABS = math.abs
--- #########
+--#endregion
 
+
+--#region Functions of events
 
 local function on_game_created_from_scenario(event)
 
 end
 
+--#endregion
+
+
+--#region Pre-game stage
 
 local function link_data()
 	--players_data = global.players
@@ -46,6 +50,9 @@ module.on_configuration_changed = (function()
 	link_data()
 end)
 module.update_global_data_on_disabling = update_global_data -- for safe disabling
+
+
+--#endregion
 
 
 ---@type table<number, function>

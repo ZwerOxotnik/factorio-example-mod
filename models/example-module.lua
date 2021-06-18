@@ -2,17 +2,17 @@
 local module = {}
 
 
--- Global data
--- ###########
+--#region Global data
 local players_data
--- ###########
+--#endregion
 
 
--- Constants
--- #########
+--#region Constants
 local ABS = math.abs
--- #########
+--#endregion
 
+
+--#region Functions of events
 
 local function on_player_created(event)
 	local player = game.get_player(event.player_index)
@@ -44,6 +44,10 @@ local function on_game_created_from_scenario(event)
 	-- biters_spawn_position_1 = global.biters_spawn_position_1
 end
 
+--#endregion
+
+
+--#region Commands
 
 local function delete_example_UI_command(cmd)
 	if cmd.player_index == 0 then -- server
@@ -63,6 +67,11 @@ local function delete_example_UI_command(cmd)
 		end
 	end
 end
+
+--#endregion
+
+
+--#region Pre-game stage
 
 
 local function link_data()
@@ -93,6 +102,8 @@ module.on_configuration_changed = (function()
 end)
 module.update_global_data_on_disabling = update_global_data -- for safe disabling of this mod
 
+
+--#endregion
 
 
 ---@type table<number, function>
