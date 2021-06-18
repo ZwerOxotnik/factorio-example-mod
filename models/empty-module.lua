@@ -54,9 +54,9 @@ module.update_global_data_on_disabling = update_global_data -- for safe disablin
 --#endregion
 
 
----@type table<number, function>
--- All events of https://lua-api.factorio.com/latest/events.html#All%20events except on_nth_tick
+---@type table<number|string, function>
 -- [optional]
+-- All events of https://lua-api.factorio.com/latest/events.html#All%20events except on_nth_tick
 module.events = {
 	--[defines.events.on_game_created_from_scenario] = on_game_created_from_scenario,
 	--[defines.events.on_gui_click] = on_gui_click,

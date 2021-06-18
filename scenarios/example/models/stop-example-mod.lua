@@ -3,10 +3,10 @@
 	Useful for other map developers and in some rare cases for mod devs
 	But another mod must have such interface.
 
-	See control.lua for other details.
+	See control.lua in the mod for other details.
 ]]
 local module = {}
-local mod_name = "disable-another-mod"
+local mod_name = "disable-" .. MOD_NAME
 
 remote.remove_interface(mod_name)
 remote.add_interface(mod_name, {}) -- trying to disable another mod

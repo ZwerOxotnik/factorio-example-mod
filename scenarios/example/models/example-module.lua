@@ -18,7 +18,30 @@ local function on_player_created(event)
 	local player = game.get_player(event.player_index)
 	if not (player and player.valid) then return end
 
-	player.print("Events of example mod works fine")
+	player.print("Events of example scenario works fine. Also, scripts of example mod has been disabled!")
+end
+
+local function on_game_created_from_scenario(event)
+	-- ########
+	-- Some examples of code what you can do with this event below
+	-- Some interaction with game ignores (i.q: game.print("loaded scenario"))
+	-- ########
+
+	-- disable_recipes()
+
+	-- if global.biters_destination == nil then
+	-- 	local target = game.get_entity_by_tag("target")
+	-- 	global.biters_destination = target.position
+	-- 	biters_destination = global.biters_destination
+	-- 	if global.target_id == nil and target then
+	-- 		global.target_id = script.register_on_entity_destroyed(target)
+	-- 	end
+	-- end
+
+	-- local biters_spawn
+	-- biters_spawn = game.get_entity_by_tag("biters_spawn_1")
+	-- global.biters_spawn_position_1 = global.biters_spawn_position_1 or biters_spawn.position
+	-- biters_spawn_position_1 = global.biters_spawn_position_1
 end
 
 --#endregion
@@ -85,7 +108,7 @@ module.update_global_data_on_disabling = update_global_data -- for safe disablin
 -- [optional]
 -- All events of https://lua-api.factorio.com/latest/events.html#All%20events except on_nth_tick
 module.events = {
-	-- [defines.events.on_game_created_from_scenario] = on_game_created_from_scenario,
+	[defines.events.on_game_created_from_scenario] = on_game_created_from_scenario,
 	-- [defines.events.on_gui_click] = on_gui_click,
 	[defines.events.on_player_created] = on_player_created,
 	-- [defines.events.on_player_joined_game] = on_player_joined_game,

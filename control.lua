@@ -8,7 +8,6 @@ local modules = {}
 modules.command_wrapper = require("models/command-wrapper/control")
 modules.example_module = require("models/example-module")
 -- modules.empty_module = require("models.empty-module")
--- modules.stop_another_script_example = require("models/stop-another-script-example")
 
 
 -- Safe disabling of this mod remotely on init stage
