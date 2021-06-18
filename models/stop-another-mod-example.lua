@@ -1,11 +1,10 @@
 --[[
-	Safely disabling anither mod/script remotely on init stage
+	Safely disables another mod/script remotely on init stage
 	Useful for other map developers and in some rare cases for mod devs
 	But another mod must have such interface.
 
 	See control.lua for other details.
 ]]
-
 local module = {}
 local mod_name = "disable-another-mod"
 

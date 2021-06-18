@@ -99,8 +99,8 @@ How to start?
 ------------
 
 * Change [info.json](info.json), [defines.lua](defines.lua)
-* Replace my nickname, this project in links with your stuff almost everywhere
-* Remove unnecessary code, files in /models and create a file there with similar structure in the folder
+* Replace my nickname, this project in links, description with your stuff almost everywhere
+* Remove unnecessary code, files in /models, root folder and create a file there with similar structure in the folder
 * Handle files in [control.lua](control.lua)
 * **Change or delete** .github/ISSUE_TEMPLATE/*
 * Change settings in [models/command-wrapper/control.lua](models/command-wrapper/control.lua) if you want
@@ -127,7 +127,7 @@ Next updates
 Optional Dependencies
 ---------------------
 
-* <a href="github.com/ZwerOxotnik/zk-lib" target="_blank"><code>zk-lib</code></a> - for localization, currently
+* <a href="github.com/ZwerOxotnik/zk-lib" target="_blank"><code>zk-lib</code></a> - for localization of [custom commands](models/command-wrapper/control.lua), currently
 
 ‼️ Important Links (Translations, Discord Support)
 ---------------------------------------------------------------

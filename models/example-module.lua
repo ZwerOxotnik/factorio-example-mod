@@ -73,7 +73,6 @@ end
 
 --#region Pre-game stage
 
-
 local function link_data()
 	players_data = global.players
 end
@@ -101,7 +100,6 @@ module.on_configuration_changed = (function()
 	link_data()
 end)
 module.update_global_data_on_disabling = update_global_data -- for safe disabling of this mod
-
 
 --#endregion
 
@@ -132,12 +130,12 @@ module.events = {
 -- }
 
 
-
 ---@type table<string, function>
 -- [optional]
 -- Check "command-wrapper" folder
 module.commands = {
 	delete_example_UI = delete_example_UI_command,
 }
+
 
 return module

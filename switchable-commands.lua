@@ -1,6 +1,6 @@
---[[
-Recommended to know about https://lua-api.factorio.com/latest/LuaCommandProcessor.html#LuaCommandProcessor.add_command
+-- Recommended to know about https://lua-api.factorio.com/latest/LuaCommandProcessor.html#LuaCommandProcessor.add_command
 
+--[[
 Returns tables of commands without functions as command "settings". All parameters are optional!
   Contains:
   	name :: string: The name of your /command. (default: key of the table)
@@ -13,7 +13,7 @@ Returns tables of commands without functions as command "settings". All paramete
     allow_for_server :: bool: Allow execution of a command from a server (default: false)
     only_for_admin :: bool: The command can be executed only by admins (default: false)
 ]]--
-
+---@type table<string, table>
 return {
 	delete_example_UI = {name = "delete-example-UI", description = {"example-mod-commands.delete-example-UI"}}, -- See example-module.lua
 }

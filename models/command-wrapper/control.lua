@@ -1,3 +1,4 @@
+
 -- Source: https://github.com/ZwerOxotnik/factorio-example-mod
 
 
@@ -238,6 +239,7 @@ local function on_runtime_mod_setting_changed(event)
 	return true
 end
 
+
 -- Adds settings for commands, so we can disable commands by settings
 module.create_settings = function()
 	local new_settings = {}
@@ -257,9 +259,11 @@ module.create_settings = function()
 	end
 end
 
+
 ---@type table<number, function>
 module.events = {
 	[defines.events.on_runtime_mod_setting_changed] = on_runtime_mod_setting_changed
 }
+
 
 return module

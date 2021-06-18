@@ -1,4 +1,4 @@
--- change this \/ in your mod!
+-- Change everything in this file in your mod!
 
 MOD_NAME = "example-mod"
 MOD_PATH = "__" .. MOD_NAME .. "__"

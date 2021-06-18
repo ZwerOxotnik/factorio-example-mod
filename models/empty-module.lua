@@ -51,7 +51,6 @@ module.on_configuration_changed = (function()
 end)
 module.update_global_data_on_disabling = update_global_data -- for safe disabling
 
-
 --#endregion
 
 
