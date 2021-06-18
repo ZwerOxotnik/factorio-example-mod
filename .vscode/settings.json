@@ -12,7 +12,8 @@
         "mods",
         "rendering",
         "commands",
-        "log"
+        "log",
+				"serpent"
     ],
     "Lua.runtime.version": "Lua 5.2",
     "Lua.workspace.ignoreDir": [
