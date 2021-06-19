@@ -98,6 +98,7 @@ Stuff used
 How to start?
 ------------
 
+* Read [this](https://github.com/justarandomgeek/vscode-factoriomod-debug/blob/master/workspace.md) to generate EmmyLua docs for the Factorio API properly
 * Change [info.json](info.json), [defines.lua](defines.lua)
 * Replace my nickname, this project in links, description with your stuff almost everywhere
 * Remove unnecessary code, files in /models, root folder and create a file there with similar structure in the folder
