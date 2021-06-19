@@ -1,50 +1,68 @@
 {
-    "lua.targetVersion": "5.2",
-    "Lua.diagnostics.globals": [
-        "global",
-        "defines",
-        "game",
-        "script",
-        "remote",
-        "data",
-        "bit32",
-        "settings",
-        "mods",
-        "rendering",
-        "commands",
-        "log",
-				"serpent"
-    ],
-    "Lua.runtime.version": "Lua 5.2",
-    "Lua.workspace.ignoreDir": [
-        ".vscode",
-        ".github",
-        "locale"
-    ],
-		"Lua.telemetry.enable": false,
-		"Lua.runtime.builtin": {
-			"basic": "enable",
-			"builtin": "enable",
-			"table": "enable",
-			"math": "enable",
-			"string": "enable",
-			"package": "enable",
-			"debug": "enable",
-			"io": "disable",
-			"jit": "disable",
-			"bit": "disable",
-			"bit32": "enable",
-			"coroutine": "disable",
-			"ffi": "disable",
-			"os": "disable",
-			"utf8": "disable"
-		},
-		"Lua.intelliSense.searchDepth": 3,
-		"Lua.hint.enable": true,
-		"Lua.diagnostics.workspaceDelay": 50,
-		"git.autofetch": "all",
-		"markdownlint.config": {
-			"MD033": false,
-			"MD034": false,
-		}
+	"lua.targetVersion": "5.2",
+	"Lua.runtime.version": "Lua 5.2",
+	"Lua.workspace.preloadFileSize": 1600,
+	"Lua.diagnostics.globals": [
+		"game",
+		"script",
+		"remote",
+		"commands",
+		"settings",
+		"rcon",
+		"rendering",
+		"global",
+		"log",
+		"defines",
+		"data",
+		"mods",
+		"serpent",
+		"table_size",
+		"bit32",
+		"util",
+		"localised_print",
+		"circuit_connector_definitions",
+		"universal_connector_template",
+		"__DebugAdapter",
+		"__Profiler"
+	],
+	"Lua.diagnostics.disable": [
+		"lowercase-global"
+	],
+	"Lua.workspace.ignoreDir": [
+			".vscode",
+			".github",
+			"locale"
+	],
+	"Lua.telemetry.enable": false,
+	"Lua.runtime.builtin": {
+		"basic": "enable",
+		"builtin": "enable",
+		"table": "enable",
+		"math": "enable",
+		"string": "enable",
+		"package": "enable",
+		"debug": "enable",
+		"io": "disable",
+		"jit": "disable",
+		"bit": "disable",
+		"bit32": "enable",
+		"coroutine": "disable",
+		"ffi": "disable",
+		"os": "disable",
+		"utf8": "disable"
+	},
+	"Lua.workspace.library": [
+		"script",
+		"rendering",
+		"game",
+		"commands"
+	],
+	"Lua.intelliSense.searchDepth": 3,
+	"Lua.hint.enable": true,
+	"Lua.diagnostics.workspaceDelay": 50,
+	"git.autofetch": "all",
+	"markdownlint.config": {
+		"MD033": false,
+		"MD034": false,
+	}
 }
