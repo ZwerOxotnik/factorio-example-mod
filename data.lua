@@ -5,7 +5,7 @@ require("defines")
 
 -- You can modify default styles
 local default_gui = data.raw["gui-style"].default
-default_gui.label.font_color = {1, 0.5, 0}
+default_gui.label.font_color = {1, 0.9, 0.9}
 
 
 -- Let's create new style for buttons

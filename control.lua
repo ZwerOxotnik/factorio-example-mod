@@ -7,6 +7,7 @@ local event_handler = require("event_handler")
 local modules = {}
 modules.command_wrapper = require("models/command-wrapper/control")
 modules.example_module = require("models/example-module")
+modules.data_consistency_example = require("models/data-consistency-example")
 -- modules.empty_module = require("models.empty-module")
 
 
