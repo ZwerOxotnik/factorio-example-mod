@@ -58,7 +58,6 @@
 		"commands"
 	],
 	"Lua.intelliSense.searchDepth": 3,
-	"Lua.hint.enable": true,
 	"Lua.diagnostics.workspaceDelay": 50,
 	"git.autofetch": "all",
 	"markdownlint.config": {
