@@ -70,6 +70,7 @@ end
 
 --#region Pre-game stage
 
+-- You might get rid of this, but it's convenient to have and use
 local function link_data()
 	players_data = global.players
 end
