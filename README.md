@@ -101,9 +101,9 @@ How to start?
 * Read [this](https://github.com/justarandomgeek/vscode-factoriomod-debug/blob/master/workspace.md) to generate EmmyLua docs for the Factorio API properly
 * Change [info.json](info.json), [defines.lua](defines.lua)
 * Replace my nickname, this project in links, description with your stuff almost everywhere
-* Remove unnecessary code, files in /models, root folder and create a file there with similar structure in the folder
-* Handle files in [control.lua](control.lua)
+* Remove unnecessary code, files in /models, /migrations, root folder and create a file there with similar structure in the folder
 * **Change or delete** .github/ISSUE_TEMPLATE/*
+* Handle files in [control.lua](control.lua)
 * Change settings in [models/command-wrapper/control.lua](models/command-wrapper/control.lua) if you want
 
 Notes
