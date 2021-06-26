@@ -25,9 +25,6 @@
 		"__DebugAdapter",
 		"__Profiler"
 	],
-	"Lua.diagnostics.disable": [
-		"lowercase-global"
-	],
 	"Lua.workspace.ignoreDir": [
 			".vscode",
 			".github",
