@@ -44,7 +44,7 @@ jobs:
       with:
         url: https://github.com/${{github.repository}}/archive/refs/tags/${{steps.aar.outputs.automatic_releases_tag}}.zip
         target: temp/
-    - run: cd temp %% mv ${{steps.aar.outputs.automatic_releases_tag}}.zip ${{steps.mod_name.outputs.prop}}_${{steps.aar.outputs.automatic_releases_tag}}.zip
+    - run: cd temp && mv ${{steps.aar.outputs.automatic_releases_tag}}.zip ${{steps.mod_name.outputs.prop}}_${{steps.aar.outputs.automatic_releases_tag}}.zip
     - uses: TGNThump/factorio-publish-mod-action@v1
       with:
         mod_portal_username: ${{ secrets.FACTORIO_USER }}
