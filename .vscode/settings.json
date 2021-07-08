@@ -1,4 +1,6 @@
 {
+	"editor.suggestSelection": "recentlyUsedByPrefix",
+	"editor.suggest.showWords": false,
 	"lua.targetVersion": "5.2",
 	"Lua.runtime.version": "Lua 5.2",
 	"Lua.workspace.preloadFileSize": 1600,
@@ -30,7 +32,6 @@
 			".github",
 			"locale"
 	],
-	"Lua.telemetry.enable": false,
 	"Lua.runtime.builtin": {
 		"basic": "enable",
 		"builtin": "enable",

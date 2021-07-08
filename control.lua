@@ -4,8 +4,11 @@ if script.level.level_name == "sandbox" then return end -- Don't init if it's "s
 
 require("defines")
 local event_handler = require("event_handler")
+
+
+---@type table<string, module>
 local modules = {}
-modules.command_wrapper = require("models/command-wrapper/control")
+modules.better_commands = require("models/BetterCommands/control")
 modules.example_module = require("models/example-module")
 modules.data_consistency_example = require("models/data-consistency-example")
 -- modules.empty_module = require("models.empty-module")
@@ -27,7 +30,6 @@ if remote.interfaces["disable-" .. script.level.mod_name] then
 	end
 end
 
-
-modules.command_wrapper.handle_custom_commands(modules.example_module) -- adds commands
+modules.better_commands:handle_custom_commands(modules.example_module) -- adds commands
 
 event_handler.add_libraries(modules)

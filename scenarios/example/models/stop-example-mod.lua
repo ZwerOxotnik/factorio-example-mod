@@ -5,7 +5,9 @@
 
 	See control.lua in the mod for other details.
 ]]
-local module = {}
+
+---@class StopExampleMod : module
+local M = {}
 local mod_name = "disable-" .. MOD_NAME
 
 remote.remove_interface(mod_name)
@@ -14,10 +16,10 @@ remote.add_interface(mod_name, {}) -- trying to disable another mod
 
 -- Reversly using this method :)
 -- Remove garbage
-module.add_remote_interface = function()
+M.add_remote_interface = function()
 	remote.remove_interface(mod_name)
 	mod_name = nil
 end
 
 
-return module
+return M

@@ -1,5 +1,6 @@
 
-local module = {}
+---@class SExampleModule : module
+local M = {}
 
 
 --#region Global data
@@ -86,28 +87,25 @@ local function update_global_data()
 end
 
 
-module.on_init = (function()
+M.on_init = (function()
 	update_global_data()
 	link_data()
 end)
 
-module.on_load = (function()
+M.on_load = (function()
 	link_data()
 end)
 
-module.on_configuration_changed = (function()
+M.on_configuration_changed = (function()
 	update_global_data()
 	link_data()
 end)
-module.update_global_data_on_disabling = update_global_data -- for safe disabling of this mod
+M.update_global_data_on_disabling = update_global_data -- for safe disabling of this mod
 
 --#endregion
 
 
----@type table<number|string, function>
--- [optional]
--- All events of https://lua-api.factorio.com/latest/events.html#All%20events except on_nth_tick
-module.events = {
+M.events = {
 	[defines.events.on_game_created_from_scenario] = on_game_created_from_scenario,
 	-- [defines.events.on_gui_click] = on_gui_click,
 	[defines.events.on_player_created] = on_player_created,
@@ -119,9 +117,7 @@ module.events = {
 	-- [defines.events.on_gui_value_changed] = on_gui_value_changed, -- please, don't use it. It impacts UPS significantly
 }
 
----@type table<number, function>
--- [optional]
--- module.on_nth_tick = {
+-- M.on_nth_tick = {
 -- 	[50] = function()
 -- 		for player_index, _ in pairs(game.connected_players) do
 -- 			pcall(update_stuff, player_index)
@@ -130,12 +126,9 @@ module.events = {
 -- }
 
 
----@type table<string, function>
--- [optional]
--- Check "command-wrapper" folder
-module.commands = {
+M.commands = {
 	delete_example_UI = delete_example_UI_command,
 }
 
 
-return module
+return M

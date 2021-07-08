@@ -16,8 +16,8 @@
 	So, in this example, we don't store data in global for players when they are offline and we're not going to "adapt" the data for singleplayer.
 ]]
 
-
-local module = {}
+---@class DataConsistencyExample : module
+local M = {}
 
 
 --#region Singleplayer data
@@ -84,28 +84,26 @@ local function update_global_data()
 end
 
 
-module.on_init = (function()
+M.on_init = (function()
 	update_global_data()
 	link_data()
 end)
 
-module.on_load = (function()
+M.on_load = (function()
 	link_data()
 end)
 
-module.on_configuration_changed = (function()
+M.on_configuration_changed = (function()
 	update_global_data()
 	link_data()
 end)
-module.update_global_data_on_disabling = update_global_data -- for safe disabling
+
+M.update_global_data_on_disabling = update_global_data -- for safe disabling
 
 --#endregion
 
 
----@type table<number|string, function>
--- [optional]
--- All events of https://lua-api.factorio.com/latest/events.html#All%20events except on_nth_tick
-module.events = {
+M.events = {
 	--[defines.events.on_player_created] = on_player_created, -- it might be useful
 	[defines.events.on_player_joined_game] = on_player_joined_game,
 	[defines.events.on_player_left_game] = delete_player_data,
@@ -113,13 +111,9 @@ module.events = {
 	[defines.events.on_cancelled_deconstruction] = on_cancelled_deconstruction
 }
 
-
----@type table<string, function>
--- [optional]
--- Check folder "command-wrapper"
-module.commands = {
+M.commands = {
 	-- set_spawn = set_spawn_command, -- Delete this example
 }
 
 
-return module
+return M

@@ -1,5 +1,6 @@
 
-local module = {}
+---@class EmptyModule : module
+local M = {}
 
 
 --#region Global data
@@ -36,28 +37,26 @@ local function update_global_data()
 end
 
 
-module.on_init = (function()
+M.on_init = (function()
 	update_global_data()
 	link_data()
 end)
 
-module.on_load = (function()
+M.on_load = (function()
 	link_data()
 end)
 
-module.on_configuration_changed = (function()
+M.on_configuration_changed = (function()
 	update_global_data()
 	link_data()
 end)
-module.update_global_data_on_disabling = update_global_data -- for safe disabling
+
+M.update_global_data_on_disabling = update_global_data -- for safe disabling
 
 --#endregion
 
 
----@type table<number|string, function>
--- [optional]
--- All events of https://lua-api.factorio.com/latest/events.html#All%20events except on_nth_tick
-module.events = {
+M.events = {
 	--[defines.events.on_game_created_from_scenario] = on_game_created_from_scenario,
 	--[defines.events.on_gui_click] = on_gui_click,
 	--[defines.events.on_player_created] = on_player_created,
@@ -68,13 +67,9 @@ module.events = {
 	--[defines.events.on_player_respawned] = clear_player_data,
 }
 
-
----@type table<string, function>
--- [optional]
--- Check folder "command-wrapper"
-module.commands = {
+M.commands = {
 	-- set_spawn = set_spawn_command, -- Delete this example
 }
 
 
-return module
+return M

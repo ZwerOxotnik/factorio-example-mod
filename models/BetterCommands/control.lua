@@ -1,11 +1,11 @@
 
 -- Source: https://github.com/ZwerOxotnik/factorio-example-mod
 
+---@class BetterCommands : module
+local M = {}
 
 ---@type table<string, table>
 local all_commands = {} -- commands from other modules
-local module = {}
-
 
 local MAX_INPUT_LENGTH = 500 -- set any number
 local CONST_COMMANDS = require(MOD_PATH .. "/const-commands")
@@ -81,7 +81,7 @@ local input_types = {
 ---@param original_func function
 ---@param command_name? string
 ---@return boolean
-local function add_custom_command(command_settings, original_func, command_name)
+local function add_custom_command(command_settings, original_func)
 	local input_type = input_types[command_settings.input_type]
 	local is_allowed_empty_args = command_settings.is_allowed_empty_args
 	local command_name = command_settings.name
@@ -158,13 +158,19 @@ local function add_custom_command(command_settings, original_func, command_name)
 	return true
 end
 
-module.handle_custom_commands = function(module)
+---Handles commands of a module
+---@param module module your module with commands
+function M:handle_custom_commands(module)
+	if module == nil then
+		log("Parameter is nil")
+		return false
+	end
 	if type(module.commands) ~= "table" then
-		log("Current module don't have proper commands")
+		log("Current module doesn't have proper commands")
 		return false
 	end
 
-	for _, added_commands in pairs(commands) do
+	for _, added_commands in pairs(all_commands) do
 		if added_commands == module.commands then
 			log("Current commands was added before")
 			return true
@@ -186,7 +192,7 @@ module.handle_custom_commands = function(module)
 				log(script.level.mod_name .. " can't add command \"" .. command_settings.name .. "\"")
 			end
 		elseif setting.value then
-			local is_added = add_custom_command(command_settings, func, command_name)
+			local is_added = add_custom_command(command_settings, func)
 			if is_added == false then
 				local message = script.level.mod_name .. " can't add command \"" .. command_settings.name .. "\""
 				disable_setting(message, nil, command_name)
@@ -224,7 +230,7 @@ local function on_runtime_mod_setting_changed(event)
 	local state = settings.global[event.setting].value
 	command_settings.name = command_settings.name or command_name
 	if state == true then
-		local is_added = add_custom_command(command_settings, func, command_name)
+		local is_added = add_custom_command(command_settings, func)
 		if is_added then
 			game.print("Added command: " .. command_settings.name or command_name)
 		else
@@ -240,8 +246,9 @@ local function on_runtime_mod_setting_changed(event)
 end
 
 
--- Adds settings for commands, so we can disable commands by settings
-module.create_settings = function()
+--- Adds settings for commands, so we can disable commands by settings
+--- Use it during setting stage
+function M:create_settings()
 	local new_settings = {}
 	for key, command in pairs(SWITCHABLE_COMMANDS) do
 		local command_name = command.name or key
@@ -260,10 +267,9 @@ module.create_settings = function()
 end
 
 
----@type table<number, function>
-module.events = {
+M.events = {
 	[defines.events.on_runtime_mod_setting_changed] = on_runtime_mod_setting_changed
 }
 
 
-return module
+return M

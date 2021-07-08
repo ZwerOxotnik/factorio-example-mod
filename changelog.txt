@@ -1,4 +1,12 @@
 ﻿---------------------------------------------------------------------------------------------------
+Version: 0.3.0
+Date: 2021-07-08
+  Changes:
+    - Added auto documentation with auto publishing on GitHub pages
+    - Improved documentation slightly
+    - Refactored slightly
+    - Fixed some bugs
+---------------------------------------------------------------------------------------------------
 Version: 0.2.6
 Date: 2021-06-21
   Changes:
