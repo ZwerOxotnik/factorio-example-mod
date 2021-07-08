@@ -16,3 +16,4 @@ jobs:
     - uses: ZwerOxotnik/action-factorio-autotag@master
       with:
         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        tag_message: "For Factorio 1.1"
