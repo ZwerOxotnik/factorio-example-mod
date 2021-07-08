@@ -35,6 +35,8 @@
   <a href="changelog.txt">Changelog</a>
   ·
   <a href="https://crowdin.com/project/factorio-mods-localization">Translations</a>
+  .
+  <a href="https://zweroxotnik.github.io/factorio-example-mod/">Documentation</a>
 </p>
 
 <h1></h1>
@@ -52,9 +54,6 @@ Lightweight modular example mod with various features and compatibilities
 
 <p align="center">
   <a href="https://mods.factorio.com/mod/example-mod/downloads"><strong>Download the mod&nbsp;&nbsp;▶</strong></a>
-</p>
-<p align="center">
-  <a href="https://factorio-example-module.github.io/"><strong>Documentation&nbsp;&nbsp;▶</strong></a>
 </p>
 
 What it can do
@@ -221,7 +220,7 @@ SOFTWARE.
 ```
 
 [discord]: https://discord.gg/YyJVUCa
-[GitHub-page]: https://factorio-example-module.github.io/
+[GitHub-page]: https://zweroxotnik.github.io/factorio-example-mod/
 [git]: https://git-scm.com/downloads
 [sphinx]: https://www.sphinx-doc.org/en/master/
 [EmmyLua-Annotations]: https://github.com/sumneko/lua-language-server/wiki/EmmyLua-Annotations
