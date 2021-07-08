@@ -16,31 +16,38 @@ jobs:
     - name: get version
       id: version
       uses: notiz-dev/github-action-json-property@release
-      with: 
+      with:
         path: 'info.json'
         prop_path: 'version'
     - name: get factorio_version
       id: factorio_version
       uses: notiz-dev/github-action-json-property@release
-      with: 
+      with:
         path: 'info.json'
         prop_path: 'factorio_version'
     - name: get mod name
       id: mod_name
       uses: notiz-dev/github-action-json-property@release
-      with: 
+      with:
         path: 'info.json'
         prop_path: 'name'
     - uses: marvinpinto/action-automatic-releases@latest
+      id: aar
       with:
         automatic_release_tag: "${{steps.version.outputs.prop}}"
         title: "For factorio ${{steps.factorio_version.outputs.prop}}"
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         prerelease: false
+    - name: Download the file
+      uses: suisei-cn/actions-download-file@v1
+      id: downloadfile  # Remember to give an ID if you need the output
+      with:
+        url: https://github.com/${{github.repository}}/archive/refs/tags/${{steps.aar.outputs.automatic_releases_tag}}.zip
+        target: temp/
     - uses: TGNThump/factorio-publish-mod-action@v1
       with:
         mod_portal_username: ${{ secrets.FACTORIO_USER }}
         mod_portal_password: ${{ secrets.FACTORIO_PASSWORD }}
         mod_name: ${{steps.mod_name.outputs.prop}}
-        asset_path: ${{steps.upload_url.outputs.prop}}
-        asset_name: ${{steps.automatic_releases_tag.outputs.prop}}
+        asset_path: ./temp/${{steps.mod_name.outputs.prop}}-${{steps.aar.outputs.automatic_releases_tag}}.zip
+        asset_name: ${{steps.aar.outputs.automatic_releases_tag}}
