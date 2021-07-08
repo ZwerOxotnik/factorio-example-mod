@@ -61,5 +61,9 @@
 	"markdownlint.config": {
 		"MD033": false,
 		"MD034": false,
-	}
+	},
+	"restructuredtext.confPath": "${workspaceFolder}\\predocs",
+	"restructuredtext.builtDocumentationPath" : "${workspaceFolder}/docs/_build/html",
+	"restructuredtext.updateOnTextChanged"    : "false",
+	"restructuredtext.updateDelay"            : 1000,
 }

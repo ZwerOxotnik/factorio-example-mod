@@ -5,6 +5,7 @@
     "coenraads.bracket-pair-colorizer-2",
     "sumneko.lua",
     "davidanson.vscode-markdownlint",
-    "editorconfig.editorconfig"
+    "editorconfig.editorconfig",
+    "lextudio.restructuredtext"
   ]
 }
