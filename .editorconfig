@@ -13,7 +13,7 @@ trim_trailing_whitespace = true
 indent_style = tab
 insert_final_newline = true
 
-[*.txt]
+[*.{txt,yml}]
 indent_style = space
 indent_size = 2
 insert_final_newline = false
@@ -23,7 +23,7 @@ indent_style = space
 indent_size = 2
 insert_final_newline = true
 
-[*.{json, md}]
+[*.{json,md}]
 indent_style = tab
 indent_size = 2
 insert_final_newline = false
