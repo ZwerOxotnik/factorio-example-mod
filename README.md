@@ -100,6 +100,7 @@ Stuff used
 * Some ZwerOxotnik's code
 * Auto documentation: [GitHub actions](.github/workflows/doc.yml) + [Python](https://www.python.org/) + [sphinx][sphinx] + [sphinx-lua][sphinx-lua] + [sphinx-rtd-theme][sphinx-rtd-theme] + [m2r2][m2r2]
 * [factorio-mod-luacheck][factorio-mod-luacheck] - This GitHub action will run your mod code through luacheck (not full support)
+* [Factorio auto tag](https://github.com/marketplace/actions/factorio-auto-tag) - auto creates tags by version in info.json (WIP)
 
 How to start?
 ------------
