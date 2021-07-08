@@ -111,7 +111,8 @@ How to start?
 * Change [info.json](info.json), [defines.lua](defines.lua)
 * Replace my nickname, this project in links, description with your stuff almost everywhere
 * Remove unnecessary code, files in /models, /migrations, root folder and create a file there with similar structure in the folder
-* **Change or delete** .github/ISSUE_TEMPLATE/* (please read [this](https://github.com/shanemadden/factorio-mod-portal-publish))
+* **Change or delete** .github/ISSUE_TEMPLATE/*
+* **Change or delete** .github/workflows/* (please read [this](https://github.com/shanemadden/factorio-mod-portal-publish))
 * Handle files in [control.lua](control.lua)
 * Change settings in [models/BetterCommands/control.lua](models/BetterCommands/control.lua) if you want
 * Change/delete auto documentation in ./predocs and [doc.yml](.github/workflows/doc.yml)
