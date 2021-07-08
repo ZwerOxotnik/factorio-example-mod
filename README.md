@@ -99,6 +99,7 @@ Stuff used
 * [EmmyLua Annotation][EmmyLua-Annotations]
 * Some ZwerOxotnik's code
 * Auto documentation: [GitHub actions](.github/workflows/doc.yml) + [Python](https://www.python.org/) + [sphinx][sphinx] + [sphinx-lua][sphinx-lua] + [sphinx-rtd-theme][sphinx-rtd-theme] + [m2r2][m2r2]
+* [factorio-mod-luacheck][factorio-mod-luacheck] - This GitHub action will run your mod code through luacheck (not full support)
 
 How to start?
 ------------
@@ -117,7 +118,7 @@ Notes
 
 * There are mods/tools that might help you (e.g.: [Factorio Library](https://mods.factorio.com/mod/flib), [Rusty's Locale Utilities](https://mods.factorio.com/mod/rusty-locale), [Big Data String Libary](https://mods.factorio.com/mod/big-data-string), [Brush tools](https://mods.factorio.com/mod/brush-tools), [Mod generator](https://github.com/ZwerOxotnik/Mod-generator) etc)
 * Don't restart your game if you've changed files for control stage
-* If you want to develop complex/big project then you'll probably try [Factorio-luacheckrc](https://github.com/Nexela/Factorio-luacheckrc) with a [GitHub action](https://github.com/Roang-zero1/factorio-mod-luacheck) but you have to mantain .luacheckrc file
+* If you want to develop complex/big project then you'll probably try [Factorio-luacheckrc](https://github.com/Nexela/Factorio-luacheckrc) with a [GitHub action][factorio-mod-luacheck] but you have to mantain .luacheckrc file
 * I recommend to use [notepad++](https://notepad-plus-plus.org) when you work with data and [notepad2](https://github.com/zufuliu/notepad2) for hot fixes. For all other cases use any IDE or code editor (e.g.: [Visual Studio Code](https://code.visualstudio.com/))
 * You can store data in entities to support data in blueprints (see an example in [LuaCombinator 3](https://mods.factorio.com/mod/LuaCombinator3))
 
@@ -128,7 +129,7 @@ Next updates
 * More simplification, integrations, examples
 * More examples of particular cases on all stages
 * Support of [SimpleAPI](https://mods.factorio.com/mod/diplomacy/discussion/60c1eb9177457f7dd7943e14) (diplomacy, money, chat, etc)
-* Probably, I'll add [factorio-mod-luacheck](https://github.com/Roang-zero1/factorio-mod-luacheck)
+* Probably, I'll add [factorio-mod-luacheck][factorio-mod-luacheck]
 * Improve documentation
 * Etc
 
@@ -222,6 +223,7 @@ SOFTWARE.
 [discord]: https://discord.gg/YyJVUCa
 [GitHub-page]: https://zweroxotnik.github.io/factorio-example-mod/
 [git]: https://git-scm.com/downloads
+[factorio-mod-luacheck]: https://github.com/Roang-zero1/factorio-mod-luacheck
 [sphinx]: https://www.sphinx-doc.org/en/master/
 [EmmyLua-Annotations]: https://github.com/sumneko/lua-language-server/wiki/EmmyLua-Annotations
 [m2r2]: https://github.com/crossnox/m2r2
