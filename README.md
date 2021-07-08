@@ -67,6 +67,7 @@ What it can do
 * Remotely and safely disable your mod
 * Publish your mod on mod portal via GitHub tags
 * Auto generate documentation with auto publishing on [GitHub pages][GitHub-page]
+* Auto publishing on [mods.portal.com](https://mods.factorio.com/) and on GitHub
 
 What it enables you to do
 -------------------------
@@ -78,6 +79,7 @@ What it enables you to do
 * Fastly publish your mod on mod portal
 * Use other's modules/code without adaptation
 * Easily manage your documenation
+* Auto publishing everywhere (almost)
 
 Useful stuff
 ------------
@@ -90,7 +92,7 @@ Useful stuff
 Stuff used
 ----------
 
-* [A GitHub Action](https://github.com/shanemadden/factorio-mod-portal-publish) to automatically publish to the Factorio mod portal
+* Many GitHub Actions to automatically publish to the Factorio mod portal etc
 * [EditorConfig](https://editorconfig.org/) - helps maintain consistent coding styles for multiple developers working on the same project across various editors and IDEs
 * Factorio's event handler (See Factorio's folder `..\data\core\lualib\event_handler.lua`)
 * [git][git] - version control system
@@ -100,6 +102,7 @@ Stuff used
 * Some ZwerOxotnik's code
 * Auto documentation: [GitHub actions](.github/workflows/doc.yml) + [Python](https://www.python.org/) + [sphinx][sphinx] + [sphinx-lua][sphinx-lua] + [sphinx-rtd-theme][sphinx-rtd-theme] + [m2r2][m2r2]
 * [factorio-mod-luacheck][factorio-mod-luacheck] - This GitHub action will run your mod code through luacheck (not full support)
+* Auto publishing using many GitHub actions etc (see [.github/workflows/autoPublish.yml](.github/workflows/autoPublish.yml))
 
 How to start?
 ------------
@@ -108,7 +111,7 @@ How to start?
 * Change [info.json](info.json), [defines.lua](defines.lua)
 * Replace my nickname, this project in links, description with your stuff almost everywhere
 * Remove unnecessary code, files in /models, /migrations, root folder and create a file there with similar structure in the folder
-* **Change or delete** .github/ISSUE_TEMPLATE/*
+* **Change or delete** .github/ISSUE_TEMPLATE/* (please read [this](https://github.com/shanemadden/factorio-mod-portal-publish))
 * Handle files in [control.lua](control.lua)
 * Change settings in [models/BetterCommands/control.lua](models/BetterCommands/control.lua) if you want
 * Change/delete auto documentation in ./predocs and [doc.yml](.github/workflows/doc.yml)
