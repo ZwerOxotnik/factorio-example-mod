@@ -1,7 +1,3 @@
-
-notifications:
-  email: false
-
 on: push
 name: Lint
 jobs:
