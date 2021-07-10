@@ -78,8 +78,9 @@ What it enables you to do
 * More possibilities to control logic
 * Fastly publish your mod on mod portal
 * Use other's modules/code without adaptation
-* Easily manage your documenation
+* Easily manage your documentation
 * Auto publishing everywhere (almost)
+* Easy maintaining
 
 Useful stuff
 ------------
@@ -100,7 +101,7 @@ Stuff used
 * [Lua Language Server](https://github.com/sumneko/lua-language-server) ([Setting without VSCode](https://github.com/sumneko/lua-language-server/wiki/Setting-without-VSCode))
 * [EmmyLua Annotation][EmmyLua-Annotations]
 * Some ZwerOxotnik's code
-* Auto documentation: [GitHub actions](.github/workflows/doc.yml) + [Python](https://www.python.org/) + [sphinx][sphinx] + [sphinx-lua][sphinx-lua] + [sphinx-rtd-theme][sphinx-rtd-theme] + [m2r2][m2r2]
+* Auto documentation: [GitHub actions](.github/workflows/doc.yml) + [Python](https://www.python.org/) + [sphinx][sphinx] + extensions (more details in [predocs/predocs.md](predocs/predocs.md))
 * [factorio-mod-luacheck][factorio-mod-luacheck] - This GitHub action will run your mod code through luacheck (not full support)
 * Auto publishing using many GitHub actions etc (see [.github/workflows/autoPublish.yml](.github/workflows/autoPublish.yml))
 
@@ -155,35 +156,6 @@ If you want to download from this source, then use commands below (requires [git
 git clone --recurse-submodules -j8 https://github.com/ZwerOxotnik/factorio-example-mod
 cd example-mod
 ```
-
-About auto documentation
-------------------------
-
-It uses [emmylua](https://emmylua.github.io/annotations/class.html) as primary doc syntax but it is also compatible with some [ldoc](https://stevedonovan.github.io/ldoc/manual/doc.md.html) tags.
-
-All configurations are stored in `predocs` folder.
-
-Please, use Python 3.6 to use these tools.
-
-Manual installation:
-
-```bash
-pip install -r requirements.txt
-```
-
-Building html:
-
-```bash
-sphinx-build -b html predocs docs/_build/html
-```
-
-Dependencies:
-
-* [sphinx][sphinx] - Sphinx is a tool that makes it easy to create intelligent and beautiful documentation
-* sphinxcontrib-luadomain - A sphinx lua domain.
-* [sphinx-lua][sphinx-lua] - Generates a [sphinx][sphinx] doc using lua doc comment.
-* [sphinx-rtd-theme][sphinx-rtd-theme] - A theme for [sphinx][sphinx]
-* [m2r2][m2r2] - Markdown to reStructuredText converter
 
 [Contributing](/CONTRIBUTING.md)
 --------------------------------

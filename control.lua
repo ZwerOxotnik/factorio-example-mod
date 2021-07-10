@@ -28,8 +28,9 @@ if remote.interfaces["disable-" .. script.level.mod_name] then
 		module.on_configuration_changed = update_global_data_on_disabling
 		module.on_init = update_global_data_on_disabling
 	end
+else
+	modules.better_commands:handle_custom_commands(modules.example_module) -- adds commands
 end
 
-modules.better_commands:handle_custom_commands(modules.example_module) -- adds commands
 
 event_handler.add_libraries(modules)
