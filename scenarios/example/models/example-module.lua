@@ -12,6 +12,10 @@ local players_data
 local ABS = math.abs
 --#endregion
 
+function say_hi()
+	game.print("Hi")
+end
+
 
 --#region Functions of events
 
@@ -19,7 +23,13 @@ local function on_player_created(event)
 	local player = game.get_player(event.player_index)
 	if not (player and player.valid) then return end
 
-	player.print("Events of example scenario works fine. Also, scripts of example mod has been disabled!")
+	global.message_for_new_player = "Events of example scenario works fine. Also, scripts of example mod has been disabled!"
+	player.print(global.message_for_new_player)
+
+	if player.admin then
+		player.print("\nYou can use global functions from scenarions via console during the game.\nType it in console to try it: /c say_hi()")
+		player.print("\nAlso, you can read and change global data via console during the game.\nType it in console: /c game.print(serpent.block(global))")
+	end
 end
 
 local function on_game_created_from_scenario(event)

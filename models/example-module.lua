@@ -12,6 +12,9 @@ local players_data
 local ABS = math.abs
 --#endregion
 
+function say_hello()
+	game.print("Hello")
+end
 
 --#region Functions of events
 
@@ -19,7 +22,14 @@ local function on_player_created(event)
 	local player = game.get_player(event.player_index)
 	if not (player and player.valid) then return end
 
-	player.print("Events of example mod works fine")
+	global.message_for_new_player = "Events of example mod works fine"
+	player.print(global.message_for_new_player)
+
+	if player.admin then
+		player.print("\nYou can access to mods by their \"name\" as a prefix for commands. For example: __example-mod__ global.test = 1")
+		player.print("\nYou can use global functions from mods via console during the game.\nType it in console to try it: /c say_hello()")
+		player.print("\nAlso, you can read and change mod global data via console during the game.\nType it in console: /c __example-mod__ game.print(serpent.block(global))")
+	end
 end
 
 --#endregion
