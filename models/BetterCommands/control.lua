@@ -78,8 +78,8 @@ local input_types = {
 	team = team_input_type
 }
 
+---@param command_settings table
 ---@param original_func function
----@param command_name? string
 ---@return boolean
 local function add_custom_command(command_settings, original_func)
 	local input_type = input_types[command_settings.input_type]
