@@ -153,7 +153,7 @@ Optional Dependencies
 If you want to download from this source, then use commands below (requires [git][git]).
 
 ```bash
-git clone --recurse-submodules -j8 https://github.com/ZwerOxotnik/factorio-example-mod
+git clone --recurse-submodules -j8 https://github.com/ZwerOxotnik/factorio-example-mod example-mod
 cd example-mod
 ```
 
