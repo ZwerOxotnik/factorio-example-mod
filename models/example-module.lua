@@ -68,26 +68,17 @@ end
 local function update_global_data()
 	global.players = global.players or {}
 
+	link_data()
+
 	for player_index, player in pairs(game.players) do
 		-- delete UIs
 	end
 end
 
 
-M.on_init = (function()
-	update_global_data()
-	link_data()
-end)
-
-M.on_load = (function()
-	link_data()
-end)
-
-M.on_configuration_changed = (function()
-	update_global_data()
-	link_data()
-end)
-
+M.on_init = update_global_data
+M.on_configuration_changed = update_global_data
+M.on_load = link_data
 M.update_global_data_on_disabling = update_global_data -- for safe disabling of this mod
 
 --#endregion
