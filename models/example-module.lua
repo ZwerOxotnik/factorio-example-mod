@@ -3,8 +3,9 @@
 local M = {}
 
 
+---@type table<string, number> https://lua-api.factorio.com/latest/LuaBootstrap.html#LuaBootstrap.generate_event_name
 local custom_events = {
-	custom_event1 = script.generate_event_name()
+	custom_event1 = script.generate_event_name() -- Don't use in any events, it'll cause desyncs
 }
 
 --#region Global data
