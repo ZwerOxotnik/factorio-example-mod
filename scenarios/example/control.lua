@@ -1,5 +1,5 @@
 
-require("__example-mod__/defines")
+require("__example-mod__/defines") -- It's possible to get lua files from other mods
 local event_handler = require("event_handler")
 
 ---@type table<string, module>
