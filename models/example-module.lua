@@ -3,6 +3,10 @@
 local M = {}
 
 
+local custom_events = {
+	custom_event1 = script.generate_event_name()
+}
+
 --#region Global data
 local players_data
 --#endregion
@@ -11,6 +15,7 @@ local players_data
 --#region Constants
 local ABS = math.abs
 --#endregion
+
 
 function say_hello()
 	game.print("Hello")
@@ -28,7 +33,16 @@ local function on_player_created(event)
 	if player.admin then
 		player.print("\nYou can access to mods by their \"name\" as a prefix for commands. For example: __example-mod__ global.test = 1")
 		player.print("\nYou can use global functions from mods via console during the game.\nType it in console to try it: /c say_hello()")
-		player.print("\nAlso, you can read and change mod global data via console during the game.\nType it in console: /c __example-mod__ game.print(serpent.block(global))")
+		player.print("\nAlso, you can read and change mod global data via console during the game." ..
+			"\nType it in console: /c __example-mod__ game.print(serpent.block(global))"
+		)
+		player.print("\nAnything can use \"remote interfaces\" and I created one as \"example-mod\" " ..
+			"(any name can be used. Usually, it uses to get custom events from a mod)," ..
+			"\nIt's safe to use anywhere if mods handled it determinately, otherwise it'll cause desync for other players. " ..
+			"It can improve compability with other mods etc, although there are some restrictions." ..
+			"\nLet's try it: /c remote.call(\"example-mod\", \"say_hello\")" ..
+			"\nAnd this: /c  remote.call(\"example-mod\", \"get_event_name\", \"custom_event1\")"
+		)
 	end
 end
 
@@ -61,6 +75,24 @@ end
 
 --#region Pre-game stage
 
+local interface = {
+	get_event_name = function(name)
+		-- return custom_events[name] -- usually, it's enough
+		game.print("ID: " .. tostring(custom_events[name]))
+	end,
+	say_hello = say_hello
+}
+
+local function add_remote_interface()
+	-- https://lua-api.factorio.com/latest/LuaRemote.html
+	remote.remove_interface("example-mod") -- For safety
+	remote.add_interface("example-mod", interface)
+end
+-- You can create interface outside events
+-- However, the game have to "load" with the mod in order to use functions of the interface
+remote.add_interface("example-mod", interface)
+
+
 local function link_data()
 	players_data = global.players
 end
@@ -80,6 +112,7 @@ M.on_init = update_global_data
 M.on_configuration_changed = update_global_data
 M.on_load = link_data
 M.update_global_data_on_disabling = update_global_data -- for safe disabling of this mod
+M.add_remote_interface = add_remote_interface
 
 --#endregion
 
