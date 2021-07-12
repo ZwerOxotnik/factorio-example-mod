@@ -105,6 +105,12 @@ Stuff used
 * [factorio-mod-luacheck][factorio-mod-luacheck] - This GitHub action will run your mod code through luacheck (not full support)
 * Auto publishing using many GitHub actions etc (see [.github/workflows/autoPublish.yml](.github/workflows/autoPublish.yml))
 
+Additional stuff
+----------------
+
+* [FactorioSumnekoLuaPlugin](https://github.com/JanSharp/FactorioSumnekoLuaPlugin) - a plugin for the [sumneko.lua vscode extension](https://github.com/sumneko/lua-language-server) to help with factorio related syntax and intelisense. (there's no compability with auto documentation)
+* [LuaFormatter](https://github.com/Koihik/LuaFormatter) - reformats your Lua source code (supports several editors)
+
 How to start?
 ------------
 
