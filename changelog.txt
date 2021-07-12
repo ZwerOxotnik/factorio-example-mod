@@ -1,4 +1,11 @@
 ﻿---------------------------------------------------------------------------------------------------
+Version: 0.3.4
+Date: 2021-07-11
+  Changes:
+    - Refactored "pre-game" stage
+    - Added an image for the example scenario
+    - Extended example on control stage
+---------------------------------------------------------------------------------------------------
 Version: 0.3.3
 Date: 2021-07-11
   Changes:
