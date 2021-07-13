@@ -16,7 +16,7 @@ modules.data_consistency_example = require("models/data-consistency-example")
 
 -- Safe disabling of this mod remotely on init stage
 -- Useful for other map developers and in some rare cases for mod devs
-if remote.interfaces["disable-" .. script.level.mod_name] then
+if remote.interfaces["disable-" .. script.level.mod_name or ""] then
 	for _, module in pairs(modules) do
 		local update_global_data_on_disabling = module.update_global_data_on_disabling
 		module.events = nil
