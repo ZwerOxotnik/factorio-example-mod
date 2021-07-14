@@ -2,6 +2,8 @@ name: Auto publish
 
 on:
   push:
+    paths:
+      - 'info.json' # Triggers only if the mod info file is updated
     branches:
       - main
 
