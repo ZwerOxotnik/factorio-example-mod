@@ -258,7 +258,7 @@ function M:create_settings()
 			setting_type = "runtime-global",
 			default_value = command.default_value or true,
 			localised_name = '/' .. command_name,
-			localised_description = command.description or ""
+			localised_description = {'', '/' .. command_name, ' ', command.description or ''}
 		}
 	end
 	if #new_settings > 0 then
