@@ -92,7 +92,7 @@ local function add_custom_command(command_settings, original_func)
 		end
 	end
 
-	local command_description = command_settings.description
+	local command_description = command_settings.description or {MOD_NAME .. "-commands." .. command_settings.name}
 	commands.add_command(command_name, command_description, function(cmd)
 		if cmd.player_index == 0 then
 			if command_settings.allow_for_server == false then
@@ -252,13 +252,14 @@ function M:create_settings()
 	local new_settings = {}
 	for key, command in pairs(SWITCHABLE_COMMANDS) do
 		local command_name = command.name or key
+		local description = command.description or {MOD_NAME .. "-commands." .. command_name}
 		new_settings[#new_settings + 1] = {
 			type = "bool-setting",
 			name = MOD_SHORT_NAME .. key,
 			setting_type = "runtime-global",
 			default_value = command.default_value or true,
 			localised_name = '/' .. command_name,
-			localised_description = {'', '/' .. command_name, ' ', command.description or ''}
+			localised_description = {'', '/' .. command_name, ' ', description}
 		}
 	end
 	if #new_settings > 0 then
