@@ -144,6 +144,17 @@ Next updates
 * Improve documentation
 * Etc
 
+Requirements
+------------
+
+Shell [scripts](./.scripts) depends on [git][git], [7z][7z], [jq][jq].
+
+Debian and Ubuntu installation:
+
+```shell
+sudo apt install p7zip-full jq git -y
+```
+
 Optional Dependencies
 ---------------------
 
@@ -202,6 +213,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
+[jq]: https://stedolan.github.io/jq/download/
+[7z]: https://www.7-zip.org/download.html
 [discord]: https://discord.gg/YyJVUCa
 [GitHub-page]: https://zweroxotnik.github.io/factorio-example-mod/
 [git]: https://git-scm.com/downloads
