@@ -149,7 +149,7 @@ Requirements
 
 Shell [scripts](./.scripts) depends on [git][git], [7z][7z], [jq][jq].
 
-Debian and Ubuntu installation:
+Installation on Debian and Ubuntu:
 
 ```shell
 sudo apt install p7zip-full jq git -y
