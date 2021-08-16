@@ -7,6 +7,7 @@
     "davidanson.vscode-markdownlint",
     "editorconfig.editorconfig",
     "lextudio.restructuredtext",
-    "koihik.vscode-lua-format"
+    "koihik.vscode-lua-format",
+    "mads-hartmann.bash-ide-vscode"
   ]
 }

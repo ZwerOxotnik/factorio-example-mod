@@ -30,6 +30,7 @@
 	"Lua.workspace.ignoreDir": [
 			".vscode",
 			".github",
+			".script",
 			"locale"
 	],
 	"Lua.runtime.builtin": {
@@ -40,10 +41,10 @@
 		"string": "enable",
 		"package": "enable",
 		"debug": "enable",
+		"bit32": "enable",
 		"io": "disable",
 		"jit": "disable",
 		"bit": "disable",
-		"bit32": "enable",
 		"coroutine": "disable",
 		"ffi": "disable",
 		"os": "disable",
