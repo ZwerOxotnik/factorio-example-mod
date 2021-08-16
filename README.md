@@ -72,11 +72,12 @@ What it can do
 What it enables you to do
 -------------------------
 
+* Handle sounds by a [script](.scripts/handle_sounds.sh)
 * Make switchable, simpler and safer [commands](models/BetterCommands/README.md)
 * Make "isolated" modules
 * Expand your modules
 * More possibilities to control logic
-* Fastly publish your mod on mod portal
+* Quickly publish your mod on mod portal
 * Use other's modules/code without adaptation
 * Easily manage your documentation
 * Auto publishing everywhere (almost)
@@ -96,12 +97,12 @@ Stuff used
 * Many GitHub Actions to automatically publish to the Factorio mod portal etc
 * [EditorConfig](https://editorconfig.org/) - helps maintain consistent coding styles for multiple developers working on the same project across various editors and IDEs
 * Factorio's event handler (See Factorio's folder `..\data\core\lualib\event_handler.lua`)
-* [git][git] - version control system
+* [git] - version control system
 * [Visual Studio Code](https://code.visualstudio.com/) - code editor
 * [Lua Language Server](https://github.com/sumneko/lua-language-server) ([Setting without VSCode](https://github.com/sumneko/lua-language-server/wiki/Setting-without-VSCode))
 * [EmmyLua Annotation][EmmyLua-Annotations]
 * Some ZwerOxotnik's code
-* Auto documentation: [GitHub actions](.github/workflows/doc.yml) + [Python](https://www.python.org/) + [sphinx][sphinx] + extensions (more details in [predocs/predocs.md](predocs/predocs.md))
+* Auto documentation: [GitHub actions](.github/workflows/doc.yml) + [Python](https://www.python.org/) + [sphinx] + extensions (more details in [predocs/predocs.md](predocs/predocs.md))
 * [factorio-mod-luacheck][factorio-mod-luacheck] - This GitHub action will run your mod code through luacheck (not full support)
 * Auto publishing using many GitHub actions etc (see [.github/workflows/autoPublish.yml](.github/workflows/autoPublish.yml))
 
@@ -110,6 +111,7 @@ Additional stuff
 
 * [FactorioSumnekoLuaPlugin](https://github.com/JanSharp/FactorioSumnekoLuaPlugin) - a plugin for the [sumneko.lua vscode extension](https://github.com/sumneko/lua-language-server) to help with factorio related syntax and intelisense. (there's no compability with auto documentation)
 * [LuaFormatter](https://github.com/Koihik/LuaFormatter) - reformats your Lua source code (supports several editors)
+* Try another example with preprocessor in lua: https://github.com/ZwerOxotnik/factorio-candran-example
 
 How to start?
 ------------
@@ -140,14 +142,14 @@ Next updates
 * More simplification, integrations, examples
 * More examples of particular cases on all stages
 * Support of [SimpleAPI](https://mods.factorio.com/mod/diplomacy/discussion/60c1eb9177457f7dd7943e14) (diplomacy, money, chat, etc)
-* Probably, I'll add [factorio-mod-luacheck][factorio-mod-luacheck]
+* Probably, I'll add [factorio-mod-luacheck]
 * Improve documentation
 * Etc
 
 Requirements
 ------------
 
-Shell [scripts](./.scripts) depends on [git][git], [7z][7z], [jq][jq].
+Shell [scripts](./.scripts) depends on [git], [7z], [jq].
 
 Installation on Debian and Ubuntu:
 
@@ -165,9 +167,9 @@ Optional Dependencies
 
 | Installation Guide | Translations | Discord |
 | ------------------ | ------------ | ------- |
-| 📖 [Installation Guide](https://wiki.factorio.com/index.php?title=Installing_Mods) | 📚 [Help with translations](https://crowdin.com/project/factorio-mods-localization) | 🦜 [Discord][discord] |
+| 📖 [Installation Guide](https://wiki.factorio.com/index.php?title=Installing_Mods) | 📚 [Help with translations](https://crowdin.com/project/factorio-mods-localization) | 🦜 [Discord] |
 
-If you want to download from this source, then use commands below (requires [git][git]).
+If you want to download from this source, then use commands below (requires [git]).
 
 ```bash
 git clone --recurse-submodules -j8 https://github.com/ZwerOxotnik/factorio-example-mod example-mod
@@ -215,7 +217,7 @@ SOFTWARE.
 
 [jq]: https://stedolan.github.io/jq/download/
 [7z]: https://www.7-zip.org/download.html
-[discord]: https://discord.gg/YyJVUCa
+[Discord]: https://discord.gg/YyJVUCa
 [GitHub-page]: https://zweroxotnik.github.io/factorio-example-mod/
 [git]: https://git-scm.com/downloads
 [factorio-mod-luacheck]: https://github.com/Roang-zero1/factorio-mod-luacheck
