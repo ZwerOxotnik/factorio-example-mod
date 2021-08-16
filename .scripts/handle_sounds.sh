@@ -60,7 +60,7 @@ echo -e "\tpath = \"__"$mod_name"__/"$folder_path"/\", -- path to this folder" >
 echo -e "\tsounds = {" >> $SOUNDS_LIST_PATH
 
 format=*.ogg
-files=($(find . -name "$format" -type f))
+files=($(find $folder_path/ -name "$format" -type f))
 for path in "${files[@]}"; do
 	name="$(basename -- $path)"
 	name=${name%.*}
