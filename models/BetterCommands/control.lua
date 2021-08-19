@@ -189,12 +189,12 @@ function M:handle_custom_commands(module)
 		if setting == nil then
 			local is_added = add_custom_command(command_settings, func)
 			if is_added == false then
-				log(script.level.mod_name .. " can't add command \"" .. command_settings.name .. "\"")
+				log(script.mod_name .. " can't add command \"" .. command_settings.name .. "\"")
 			end
 		elseif setting.value then
 			local is_added = add_custom_command(command_settings, func)
 			if is_added == false then
-				local message = script.level.mod_name .. " can't add command \"" .. command_settings.name .. "\""
+				local message = script.mod_name .. " can't add command \"" .. command_settings.name .. "\""
 				disable_setting(message, nil, command_name)
 			end
 		else
@@ -234,7 +234,7 @@ local function on_runtime_mod_setting_changed(event)
 		if is_added then
 			game.print("Added command: " .. command_settings.name or command_name)
 		else
-			local message = script.level.mod_name .. " can't add command \"" .. command_settings.name .. "\""
+			local message = script.mod_name .. " can't add command \"" .. command_settings.name .. "\""
 			disable_setting(message, nil, command_name)
 		end
 	else
