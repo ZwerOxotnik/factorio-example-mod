@@ -13,10 +13,10 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/ZwerOxotnik/example-mod/tags">
+  <a href="https://github.com/ZwerOxotnik/factorio-example-mod/tags">
     <img src="https://img.shields.io/github/tag/ZwerOxotnik/factorio-example-mod.svg?label=Release&color=FF5500" alt="Release">
   </a>
-  <a href="https://github.com/ZwerOxotnik/example-mod/stargazers">
+  <a href="https://github.com/ZwerOxotnik/factorio-example-mod/stargazers">
     <img src="https://img.shields.io/github/stars/ZwerOxotnik/factorio-example-mod.svg?label=Stars&color=F08125" alt="Star">
   </a>
   <a href="https://discord.gg/YyJVUCa">
@@ -26,7 +26,7 @@
     <img src="https://ionicabizau.github.io/badges/patreon.svg" alt="Patreon">
   <a href="https://ko-fi.com/zweroxotnik">
     <img src="https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg" height="20" alt="Buy me a coffee">
-  <a href="http://github.com/ZwerOxotnik/example-mod/fork">
+  <a href="http://github.com/ZwerOxotnik/factorio-example-mod/fork">
     <img src="https://img.shields.io/github/forks/ZwerOxotnik/factorio-example-mod.svg?label=Forks&color=7889DD" alt="Fork">
   </a>
 </p>
