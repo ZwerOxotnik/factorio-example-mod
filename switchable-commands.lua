@@ -12,7 +12,7 @@ Returns tables of commands without functions as command "settings". All paramete
         "team" - Stops execution if can't find a team (force) by parameter
     allow_for_server :: boolean: Allow execution of a command from a server (default: false)
     only_for_admin :: boolean: The command can be executed only by admins (default: false)
-		default_value :: boolean: default value for settings (default: false)
+		default_value :: boolean: default value for settings (default: true)
 ]]--
 ---@type table<string, table>
 return {

@@ -30,7 +30,7 @@ end
 ---@param player_index? number
 -- Sends message to a player or server
 local function print_to_caller(message, player_index)
-	if game == nil or player_index == nil or player_index == 0 then
+	if not (game and player_index) then
 		print(message) -- this message for server
 	else
 		local player = game.get_player(player_index)
@@ -43,8 +43,8 @@ end
 
 ---@param error_message string
 ---@param player_index? number
----@param command_name string
-local function disable_setting(error_message, player_index, command_name)
+---@param orig_command_name string
+local function disable_setting(error_message, player_index, orig_command_name)
 	print_to_caller(error_message, player_index)
 
 	local is_message_sended = false
@@ -61,8 +61,8 @@ local function disable_setting(error_message, player_index, command_name)
 	end
 
 	-- Turns off the command
-	if command_name then
-		local setting_name = MOD_SHORT_NAME .. command_name
+	if orig_command_name then
+		local setting_name = MOD_SHORT_NAME .. orig_command_name
 		if settings.global[setting_name] then
 			settings.global[setting_name] = {
 				value = false
@@ -81,7 +81,7 @@ local input_types = {
 ---@param command_settings table
 ---@param original_func function
 ---@return boolean
-local function add_custom_command(command_settings, original_func)
+local function add_custom_command(orig_command_name, command_settings, original_func)
 	local input_type = input_types[command_settings.input_type]
 	local is_allowed_empty_args = command_settings.is_allowed_empty_args
 	local command_name = command_settings.name
@@ -151,7 +151,7 @@ local function add_custom_command(command_settings, original_func)
 		if is_ok then
 			return
 		else
-			disable_setting(error_message, cmd.player_index, command_name)
+			disable_setting(error_message, cmd.player_index, orig_command_name)
 		end
 	end)
 
@@ -187,12 +187,12 @@ function M:handle_custom_commands(module)
 		end
 
 		if setting == nil then
-			local is_added = add_custom_command(command_settings, func)
+			local is_added = add_custom_command(command_name, command_settings, func)
 			if is_added == false then
 				log(script.mod_name .. " can't add command \"" .. command_settings.name .. "\"")
 			end
 		elseif setting.value then
-			local is_added = add_custom_command(command_settings, func)
+			local is_added = add_custom_command(command_name, command_settings, func)
 			if is_added == false then
 				local message = script.mod_name .. " can't add command \"" .. command_settings.name .. "\""
 				disable_setting(message, nil, command_name)
@@ -219,18 +219,19 @@ end
 ---@return boolean
 local function on_runtime_mod_setting_changed(event)
 	if event.setting_type ~= "runtime-global" then return end
-	if string.find(event.setting, '^' .. MOD_SHORT_NAME) ~= 1 then return end
+	local setting_name = event.setting
+	if string.find(setting_name, '^' .. MOD_SHORT_NAME) ~= 1 then return end
 
-	local command_name = string.gsub(event.setting, '^' .. MOD_SHORT_NAME, "")
+	local command_name = string.gsub(setting_name, '^' .. MOD_SHORT_NAME, "")
 	local func = find_func_by_command_name(command_name) -- WARNING: check this throughly!
 	if func == nil then
 		log("Didn't find '" .. command_name .. "' among commands in modules")
 	end
 	local command_settings = SWITCHABLE_COMMANDS[command_name] or {}
-	local state = settings.global[event.setting].value
+	local state = settings.global[setting_name].value
 	command_settings.name = command_settings.name or command_name
 	if state == true then
-		local is_added = add_custom_command(command_settings, func)
+		local is_added = add_custom_command(command_name, command_settings, func)
 		if is_added then
 			game.print("Added command: " .. command_settings.name or command_name)
 		else
@@ -253,13 +254,14 @@ function M:create_settings()
 	for key, command in pairs(SWITCHABLE_COMMANDS) do
 		local command_name = command.name or key
 		local description = command.description or {MOD_NAME .. "-commands." .. command_name}
+		command_name = '/' .. command_name
 		new_settings[#new_settings + 1] = {
 			type = "bool-setting",
 			name = MOD_SHORT_NAME .. key,
 			setting_type = "runtime-global",
 			default_value = command.default_value or true,
-			localised_name = '/' .. command_name,
-			localised_description = {'', '/' .. command_name, ' ', description}
+			localised_name = command_name,
+			localised_description = {'', command_name, ' ', description}
 		}
 	end
 	if #new_settings > 0 then
