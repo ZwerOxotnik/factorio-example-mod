@@ -90,6 +90,7 @@ Useful stuff
 * GitHub service for localization via crowdin: https://github.com/dima74/factorio-mods-localization
 * Optimisation tips: https://stigmax.gitbook.io/lua-guide/auxiliary/optimizations & http://lua-users.org/wiki/OptimisationTips
 * EmmyLua Annotations: [lua-language-server/wiki/EmmyLua-Annotations][EmmyLua-Annotations]
+* Untitled GUI Guide: https://github.com/ClaudeMetz/UntitledGuiGuide/wiki (comprehensive tutorial on building custom interfaces)
 
 Stuff used
 ----------
