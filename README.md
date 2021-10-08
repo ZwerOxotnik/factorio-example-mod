@@ -88,7 +88,7 @@ Useful stuff
 
 * Factorio modding: https://wiki.factorio.com/Modding
 * GitHub service for localization via crowdin: https://github.com/dima74/factorio-mods-localization
-* Optimisation tips: https://stigmax.gitbook.io/lua-guide/auxiliary/optimizations & http://lua-users.org/wiki/OptimisationTips
+* Optimisation tips: https://stigmax.gitbook.io/lua-guide/auxiliary/optimizations & http://lua-users.org/wiki/OptimisationTips & https://springrts.com/wiki/Lua_Performance & https://www.lua.org/gems/sample.pdf
 * EmmyLua Annotations: [lua-language-server/wiki/EmmyLua-Annotations][EmmyLua-Annotations]
 * Untitled GUI Guide: https://github.com/ClaudeMetz/UntitledGuiGuide/wiki (comprehensive tutorial on building custom interfaces)
 
