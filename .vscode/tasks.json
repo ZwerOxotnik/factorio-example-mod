@@ -13,17 +13,6 @@
 			}
 		},
 		{
-			"label": "Build html",
-			"type": "shell",
-			"problemMatcher": [],
-			"command": "sphinx-build -b html predocs docs/_build/html",
-			"args": [""],
-			"group": "build",
-			"presentation": {
-				"reveal": "silent",
-			}
-		},
-		{
 			"label": "Handle sounds",
 			"type": "shell",
 			"problemMatcher": [],

@@ -35,8 +35,6 @@
   <a href="changelog.txt">Changelog</a>
   ·
   <a href="https://crowdin.com/project/factorio-mods-localization">Translations</a>
-  .
-  <a href="https://zweroxotnik.github.io/factorio-example-mod/">Documentation</a>
 </p>
 
 <h1></h1>
@@ -66,7 +64,6 @@ What it can do
 * Use modular structure
 * Remotely and safely disable your mod
 * Publish your mod on mod portal via GitHub tags
-* Auto generate documentation with auto publishing on [GitHub pages][GitHub-page]
 * Auto publishing on [mods.portal.com](https://mods.factorio.com/) and on GitHub
 
 What it enables you to do
@@ -79,7 +76,6 @@ What it enables you to do
 * More possibilities to control logic
 * Quickly publish your mod on mod portal
 * Use other's modules/code without adaptation
-* Easily manage your documentation
 * Auto publishing everywhere (almost)
 * Easy maintaining
 
@@ -103,14 +99,13 @@ Stuff used
 * [Lua Language Server](https://github.com/sumneko/lua-language-server) ([Setting without VSCode](https://github.com/sumneko/lua-language-server/wiki/Setting-without-VSCode))
 * [EmmyLua Annotation][EmmyLua-Annotations]
 * Some ZwerOxotnik's code
-* Auto documentation: [GitHub actions](.github/workflows/doc.yml) + [Python](https://www.python.org/) + [sphinx] + extensions (more details in [predocs/predocs.md](predocs/predocs.md))
 * [factorio-mod-luacheck][factorio-mod-luacheck] - This GitHub action will run your mod code through luacheck (not full support)
 * Auto publishing using many GitHub actions etc (see [.github/workflows/autoPublish.yml](.github/workflows/autoPublish.yml))
 
 Additional stuff
 ----------------
 
-* [FactorioSumnekoLuaPlugin](https://github.com/JanSharp/FactorioSumnekoLuaPlugin) - a plugin for the [sumneko.lua vscode extension](https://github.com/sumneko/lua-language-server) to help with factorio related syntax and intelisense. (there's no compability with auto documentation)
+* [FactorioSumnekoLuaPlugin](https://github.com/JanSharp/FactorioSumnekoLuaPlugin) - a plugin for the [sumneko.lua vscode extension](https://github.com/sumneko/lua-language-server) to help with factorio related syntax and intelisense.
 * [LuaFormatter](https://github.com/Koihik/LuaFormatter) - reformats your Lua source code (supports several editors)
 * Try another example with preprocessor in lua: https://github.com/ZwerOxotnik/factorio-candran-example
 
@@ -125,7 +120,6 @@ How to start?
 * **Change or delete** .github/workflows/* (please read [this](https://github.com/shanemadden/factorio-mod-portal-publish))
 * Handle files in [control.lua](control.lua)
 * Change settings in [models/BetterCommands/control.lua](models/BetterCommands/control.lua) if you want
-* Change/delete auto documentation in ./predocs and [doc.yml](.github/workflows/doc.yml)
 
 Notes
 -----
@@ -144,7 +138,6 @@ Next updates
 * More examples of particular cases on all stages
 * Support of [SimpleAPI](https://mods.factorio.com/mod/diplomacy/discussion/60c1eb9177457f7dd7943e14) (diplomacy, money, chat, etc)
 * Probably, I'll add [factorio-mod-luacheck]
-* Improve documentation
 * Etc
 
 Requirements
@@ -222,8 +215,4 @@ SOFTWARE.
 [GitHub-page]: https://zweroxotnik.github.io/factorio-example-mod/
 [git]: https://git-scm.com/downloads
 [factorio-mod-luacheck]: https://github.com/Roang-zero1/factorio-mod-luacheck
-[sphinx]: https://www.sphinx-doc.org/en/master/
 [EmmyLua-Annotations]: https://github.com/sumneko/lua-language-server/wiki/EmmyLua-Annotations
-[m2r2]: https://github.com/crossnox/m2r2
-[sphinx-rtd-theme]: https://github.com/readthedocs/sphinx_rtd_theme
-[sphinx-lua]: https://github.com/boolangery/sphinx-lua
