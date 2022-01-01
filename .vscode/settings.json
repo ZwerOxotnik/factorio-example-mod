@@ -66,5 +66,10 @@
 	"restructuredtext.confPath": "${workspaceFolder}\\predocs",
 	"restructuredtext.builtDocumentationPath" : "${workspaceFolder}/docs/_build/html",
 	"restructuredtext.updateOnTextChanged"    : "false",
-	"restructuredtext.updateDelay"            : 1000,
+	"restructuredtext.updateDelay": 1000,
+	"Lua.diagnostics.disable": [
+		"lowercase-global",
+		"undefined-doc-name",
+		"undefined-doc-class"
+	],
 }
