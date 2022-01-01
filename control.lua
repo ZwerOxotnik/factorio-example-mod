@@ -3,7 +3,6 @@ if script.level.campaign_name then return end -- Don't init if it's a campaign
 if script.level.level_name == "sandbox" then return end -- Don't init if it's "sandbox" scenario
 
 require("defines")
-local event_handler = require("event_handler")
 
 
 ---@type table<string, module>
@@ -32,5 +31,13 @@ else
 	modules.better_commands:handle_custom_commands(modules.example_module) -- adds commands
 end
 
+
+local event_handler
+if script.active_mods["zk-lib"] then
+	-- Same as Factorio "event_handler", but slightly better performance
+	event_handler = require("__zk-lib__/static-libs/lualibs/event_handler_vZO.lua")
+else
+	event_handler = require("event_handler")
+end
 
 event_handler.add_libraries(modules)

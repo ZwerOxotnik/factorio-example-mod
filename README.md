@@ -154,7 +154,7 @@ sudo apt install p7zip-full jq git -y
 Optional Dependencies
 ---------------------
 
-* <a href="github.com/ZwerOxotnik/zk-lib" target="_blank"><code>zk-lib</code></a> - for localization of [BetterCommands](models/BetterCommands/control.lua), currently
+* <a href="github.com/ZwerOxotnik/zk-lib" target="_blank"><code>zk-lib</code></a> - for localization of [BetterCommands](models/BetterCommands/control.lua) and [event handler](/control.lua), currently
 
 ‼️ Important Links (Translations, Discord Support)
 ---------------------------------------------------------------
