@@ -72,4 +72,8 @@
 		"undefined-doc-name",
 		"undefined-doc-class"
 	],
+	"triggerTaskOnSave.tasks": {
+		"Candran to Lua": ["*.can"],
+		"Luacheck": ["*.lua"]
+	}
 }
