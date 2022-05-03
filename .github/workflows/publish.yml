@@ -12,8 +12,39 @@ jobs:
       uses: actions/checkout@v2
       with:
         submodules: recursive
-    - name: Publish Mod
-      uses: shanemadden/factorio-mod-portal-publish@stable
-      env:
-        FACTORIO_PASSWORD: ${{ secrets.FACTORIO_PASSWORD }}
-        FACTORIO_USER: ${{ secrets.FACTORIO_USER }}
+    - name: get version
+      id: version
+      uses: notiz-dev/github-action-json-property@release
+      with:
+        path: 'info.json'
+        prop_path: 'version'
+    - name: get factorio_version
+      id: factorio_version
+      uses: notiz-dev/github-action-json-property@release
+      with:
+        path: 'info.json'
+        prop_path: 'factorio_version'
+    - name: get mod name
+      id: mod_name
+      uses: notiz-dev/github-action-json-property@release
+      with:
+        path: 'info.json'
+        prop_path: 'name'
+    - name: Zip mod
+      run: bash ./.scripts/zip_mod.sh
+    - uses: TGNThump/factorio-publish-mod-action@v1
+      with:
+        mod_portal_username: ${{ secrets.FACTORIO_USER }}
+        mod_portal_password: ${{ secrets.FACTORIO_PASSWORD }}
+        mod_name: ${{steps.mod_name.outputs.prop}}
+        asset_path: ./${{steps.mod_name.outputs.prop}}_${{steps.version.outputs.prop}}.zip
+        asset_name: ${{steps.mod_name.outputs.prop}}_${{steps.version.outputs.prop}}.zip
+    - uses: marvinpinto/action-automatic-releases@latest
+      id: aar
+      with:
+        automatic_release_tag: "${{steps.version.outputs.prop}}"
+        title: "For factorio ${{steps.factorio_version.outputs.prop}}"
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        prerelease: false
+        files: |
+          ./${{steps.mod_name.outputs.prop}}_${{steps.version.outputs.prop}}.zip
