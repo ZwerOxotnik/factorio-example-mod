@@ -87,6 +87,7 @@ Useful stuff
 * Optimisation tips: https://stigmax.gitbook.io/lua-guide/auxiliary/optimizations & http://lua-users.org/wiki/OptimisationTips & https://springrts.com/wiki/Lua_Performance & https://www.lua.org/gems/sample.pdf & [tips](https://stackoverflow.com/questions/154672/what-can-i-do-to-increase-the-performance-of-a-lua-program) (please, notice that Factorio uses lua [5.2.1](https://lua-api.factorio.com/latest/Libraries.html), so some tips might be **irrelevant** for Factorio mods!) & [Performance Comparison](https://eklausmeier.wordpress.com/2020/05/14/performance-comparison-pallene-vs-lua-5-1-5-2-5-3-5-4-vs-c/) & https://gitspartv.github.io/LuaJIT-Benchmarks/
 * EmmyLua Annotations: [lua-language-server/wiki/EmmyLua-Annotations][EmmyLua-Annotations]
 * Untitled GUI Guide: https://github.com/ClaudeMetz/UntitledGuiGuide/wiki (comprehensive tutorial on building custom interfaces)
+* Code Completion for jetbrains IDEs: https://forums.factorio.com/viewtopic.php?f=135&p=567132
 
 Stuff used
 ----------
@@ -137,8 +138,9 @@ Next updates
 * More info about data stage
 * More simplification, integrations, examples
 * More examples of particular cases on all stages
-* Support of [SimpleAPI](https://mods.factorio.com/mod/diplomacy/discussion/60c1eb9177457f7dd7943e14) (diplomacy, money, chat, etc)
+* Support of [EasyAPI](https://mods.factorio.com/mod/EasyAPI) (diplomacy, money, chat, etc)
 * Probably, I'll add [factorio-mod-luacheck]
+* Some info about [lazyAPI](https://github.com/ZwerOxotnik/zk-lib) someday
 * Etc
 
 Requirements
