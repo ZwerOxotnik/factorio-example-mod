@@ -1,5 +1,6 @@
-
 -- Source: https://github.com/ZwerOxotnik/factorio-example-mod
+--TODO: fix localization, handle settings on events more accurately
+
 
 ---@class BetterCommands : module
 local M = {}
