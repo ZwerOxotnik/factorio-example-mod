@@ -48,8 +48,13 @@ fi
 
 
 echo "you're in ${bold}$mod_folder${normal}"
+
 read -r -p "Complete path to folder of sounds: $mod_name/" folder_name 
 folder_path=$mod_folder/$folder_name
+if [ ! -z "$folder_name" ]; then
+	rel_folder_path="${folder_name}/"
+fi
+
 read -r -p "Add sounds to programmable speakers? [Y/N] " response
 case "$response" in
     [yY][eE][sS]|[yY])
@@ -98,11 +103,7 @@ fi
 if [ $STATE -eq 2 ]; then
 	echo -e "\tname = nil --change me, if you want to add these sounds to programmable speakers" >> $SOUNDS_LIST_PATH
 fi
-if [ -z "$folder_name" ]; then
-	echo -e "\tpath = \"__${mod_name}__/\", -- path to this folder" >> $SOUNDS_LIST_PATH
-else
-	echo -e "\tpath = \"__"${mod_name}"__/"${folder_name}"/\", -- path to this folder" >> $SOUNDS_LIST_PATH
-fi
+echo -e "\tpath = \"__"${mod_name}"__/"${rel_folder_path}"\", -- path to this folder" >> $SOUNDS_LIST_PATH
 echo -e "\tsounds = {" >> $SOUNDS_LIST_PATH
 
 
@@ -148,17 +149,13 @@ echo "return sounds_list" >> $SOUNDS_LIST_PATH
 echo ""
 echo "You're almost ready!${bold}"
 
-if [ ! -f "$SCRIPT_DIR/control.lua" ] && [ $infojson_exists = true ]; then
-	if [ -z "$folder_name" ]; then
-		echo "require(\"__${mod_name}__/sounds_list\")" >> "$SCRIPT_DIR/control.lua"
-	else
-		echo "require(\"__${mod_name}__/${folder_name}/sounds_list\")" >> "$SCRIPT_DIR/control.lua"
-	fi
+if [ ! -s "$SCRIPT_DIR/control.lua" ] && [ $infojson_exists = true ]; then
+	echo "require(\"__${mod_name}__/${rel_folder_path}sounds_list\")" >> "$SCRIPT_DIR/control.lua"
 else
 	if [ $infojson_exists = true ]; then
-		echo "# You need to write 'require(\"__${mod_name}__/${folder_name}/sounds_list\")' in your ${mod_name}/control.lua"
+		echo "# You need to write 'require(\"__${mod_name}__/${rel_folder_path}sounds_list\")' in your ${mod_name}/control.lua"
 	else
-		echo "# You need to write 'require(\"__mod-name__/${folder_name}/sounds_list\")' in your ${mod_name}/control.lua"
+		echo "# You need to write 'require(\"__mod-name__/${rel_folder_path}sounds_list\")' in your ${mod_name}/control.lua"
 	fi
 fi
 echo "# Add string \"zk-lib\" in dependencies of ${mod_name}/info.json, example: '\"dependencies\": [\"zk-lib\"]'"
