@@ -9,6 +9,10 @@ cd "$REPOSITORY/"
 
 ### Get mod name and version from info.json
 ### https://stedolan.github.io/jq/
+if ! command -v jq &> /dev/null; then
+  echo "Please install jq https://stedolan.github.io/jq/"
+  exit
+fi
 mod_name=`cat info.json|jq -r .name`
 mod_ver=`cat info.json|jq -r .version`
 
