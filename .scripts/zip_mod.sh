@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 ### Run this script after updating the mod to prepare a zip of it.
 
 
