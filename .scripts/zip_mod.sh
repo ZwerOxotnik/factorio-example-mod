@@ -57,6 +57,13 @@ MOD_NAME=$(jq -r '.name' info.json)
 MOD_VERSION=$(jq -r '.version' info.json)
 
 
+# Validate the version string we're building
+if ! echo "${MOD_VERSION}" | grep -P --quiet '^(v)?\d+\.\d+\.\d+$'; then
+    echo "Bad version, needs to be (v)%u.%u.%u"
+    exit 1
+fi
+
+
 ### Prepare zip for Factorio native use and mod portal
 ### https://www.7-zip.org/download.html
 name="${MOD_NAME}_${MOD_VERSION}"
