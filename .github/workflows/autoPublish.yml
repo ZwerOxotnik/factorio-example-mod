@@ -35,13 +35,10 @@ jobs:
         prop_path: 'name'
     - name: Zip mod
       run: bash ./.scripts/zip_mod.sh
-    - uses: TGNThump/factorio-publish-mod-action@v1
-      with:
-        mod_portal_username: ${{ secrets.FACTORIO_USER }}
-        mod_portal_password: ${{ secrets.FACTORIO_PASSWORD }}
-        mod_name: ${{steps.mod_name.outputs.prop}}
-        asset_path: ./${{steps.mod_name.outputs.prop}}_${{steps.version.outputs.prop}}.zip
-        asset_name: ${{steps.mod_name.outputs.prop}}_${{steps.version.outputs.prop}}.zip
+    - name: Upload the mod on mods.factorio.com
+      env:
+        FACTORIO_MOD_API_KEY: ${{ secrets.FACTORIO_MOD_API_KEY }}
+      run: bash ./.scripts/upload.sh
     - uses: marvinpinto/action-automatic-releases@latest
       id: aar
       with:
