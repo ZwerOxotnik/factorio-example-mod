@@ -6,7 +6,7 @@
 	"author": "Put your nickname",
 	"contact": "Put your contacts",
 	"homepage": "Put a link",
-	"description": "See locale/en",
+	"description": "See locale/en ",
 	"dependencies": [
 		"? zk-lib >= 0.10.0",
 		"(?) gvv"
