@@ -16,7 +16,7 @@ if ! command -v 7z &> /dev/null; then
 	has_errors=true
 fi
 if [ $has_errors = true ] ; then
-	exit
+	exit 1
 fi
 
 
@@ -45,7 +45,7 @@ fi
 
 if [ $infojson_exists = false ] ; then
 	echo "There's no info.json"
-	exit
+	exit 1
 fi
 cd "$mod_folder/"
 echo "Target folder: ${mod_folder}"
