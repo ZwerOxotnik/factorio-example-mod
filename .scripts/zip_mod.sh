@@ -2,23 +2,28 @@
 ### Run this script after updating the mod to prepare a zip of it.
 
 
-### REPOSITORY is current working directory
-REPOSITORY=`pwd`
-cd "$REPOSITORY/"
-
-
 ### Check commands
 has_errors=false
+if ! command -v git &> /dev/null; then
+	echo "Please install git https://git-scm.com/downloads"
+	has_errors=true
+fi
 if ! command -v jq &> /dev/null; then
-  echo "Please install jq https://stedolan.github.io/jq/"
-  has_errors=true
+	echo "Please install jq https://stedolan.github.io/jq/"
+	has_errors=true
 fi
 if ! command -v 7z &> /dev/null; then
-  echo "Please install 7-Zip https://www.7-zip.org/download.html"
+	echo "Please install 7-Zip https://www.7-zip.org/download.html"
+	has_errors=true
 fi
 if [ $has_errors = true ] ; then
 	exit
 fi
+
+
+### REPOSITORY is current working directory
+REPOSITORY=`pwd`
+cd "$REPOSITORY/"
 
 
 ### Get mod name and version from info.json
