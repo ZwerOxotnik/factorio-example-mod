@@ -58,8 +58,8 @@ MOD_VERSION=$(jq -r '.version' info.json)
 
 
 # Validate the version string we're building
-if ! echo "${MOD_VERSION}" | grep -P --quiet '^(v)?\d+\.\d+\.\d+$'; then
-    echo "Bad version, needs to be (v)%u.%u.%u"
+if ! echo "${MOD_VERSION}" | grep -P --quiet '^\d+\.\d+\.\d+$'; then
+    echo "Incorrect version pattern, needs to be %u.%u.%u (e.q., 0.1.0)"
     exit 1
 fi
 
