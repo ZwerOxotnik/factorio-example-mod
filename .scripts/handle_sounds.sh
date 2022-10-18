@@ -12,11 +12,11 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cd $SCRIPT_DIR
 infojson_exists=false
 script_file=`basename "$0"`
-if [[ -f "$SCRIPT_DIR/info.json" ]]; then
+if [[ -s "$SCRIPT_DIR/info.json" ]]; then
     infojson_exists=true
 else
 	cd ..
-	if [[ -f "$PWD/info.json" ]]; then
+	if [[ -s "$PWD/info.json" ]]; then
 		infojson_exists=true
 	else
 		cd $SCRIPT_DIR
@@ -49,7 +49,7 @@ fi
 
 echo "you're in ${bold}$mod_folder${normal}"
 
-read -r -p "Complete path to folder of sounds: $mod_name/" folder_name 
+read -r -p "Complete path to folder of sounds: $mod_name/" folder_name
 folder_path=$mod_folder/$folder_name
 if [ ! -z "$folder_name" ]; then
 	rel_folder_path="${folder_name}/"
