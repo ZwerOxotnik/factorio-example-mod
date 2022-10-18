@@ -53,13 +53,13 @@ echo "Target folder: ${mod_folder}"
 
 ### Get mod name and version from info.json
 ### https://stedolan.github.io/jq/
-mod_name=`cat info.json|jq -r .name`
-mod_ver=`cat info.json|jq -r .version`
+MOD_NAME=$(jq -r '.name' info.json)
+MOD_VERSION=$(jq -r '.version' info.json)
 
 
 ### Prepare zip for Factorio native use and mod portal
 ### https://www.7-zip.org/download.html
-name="${mod_name}_${mod_ver}"
+name="${MOD_NAME}_${MOD_VERSION}"
 if command -v git &> /dev/null; then
 	git clean -xdf
 fi

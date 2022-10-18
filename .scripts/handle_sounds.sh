@@ -40,7 +40,7 @@ CFG_FILE=sounds_list.cfg
 ### Get mod name and version from info.json
 ### https://stedolan.github.io/jq/
 if [ $infojson_exists = true ] ; then
-	mod_name=`cat info.json|jq -r .name`
+	MOD_NAME=$(jq -r '.name' info.json)
 	if ! command -v jq &> /dev/null; then
 		echo "Please install jq https://stedolan.github.io/jq/"
 	fi
@@ -49,7 +49,7 @@ fi
 
 echo "you're in ${bold}$mod_folder${normal}"
 
-read -r -p "Complete path to folder of sounds: $mod_name/" folder_name
+read -r -p "Complete path to folder of sounds: $MOD_NAME/" folder_name
 folder_path=$mod_folder/$folder_name
 if [ ! -z "$folder_name" ]; then
 	rel_folder_path="${folder_name}/"
@@ -67,7 +67,7 @@ esac
 if [ $STATE -eq 1 ]; then
 	read -r -p "Insert group name of sounds:" sound_group_name
 	case "$sound_group_name" in "")
-		sound_group_name=$mod_name
+		sound_group_name=$MOD_NAME
 		;;
 	esac
 fi
@@ -103,7 +103,7 @@ fi
 if [ $STATE -eq 2 ]; then
 	echo -e "\tname = nil --change me, if you want to add these sounds to programmable speakers" >> $SOUNDS_LIST_PATH
 fi
-echo -e "\tpath = \"__"${mod_name}"__/"${rel_folder_path}"\", -- path to this folder" >> $SOUNDS_LIST_PATH
+echo -e "\tpath = \"__"${MOD_NAME}"__/"${rel_folder_path}"\", -- path to this folder" >> $SOUNDS_LIST_PATH
 echo -e "\tsounds = {" >> $SOUNDS_LIST_PATH
 
 
@@ -150,15 +150,15 @@ echo ""
 echo "You're almost ready!${bold}"
 
 if [ ! -s "$SCRIPT_DIR/control.lua" ] && [ $infojson_exists = true ]; then
-	echo "require(\"__${mod_name}__/${rel_folder_path}sounds_list\")" >> "$SCRIPT_DIR/control.lua"
+	echo "require(\"__${MOD_NAME}__/${rel_folder_path}sounds_list\")" >> "$SCRIPT_DIR/control.lua"
 else
 	if [ $infojson_exists = true ]; then
-		echo "# You need to write 'require(\"__${mod_name}__/${rel_folder_path}sounds_list\")' in your ${mod_name}/control.lua"
+		echo "# You need to write 'require(\"__${MOD_NAME}__/${rel_folder_path}sounds_list\")' in your ${MOD_NAME}/control.lua"
 	else
-		echo "# You need to write 'require(\"__mod-name__/${rel_folder_path}sounds_list\")' in your ${mod_name}/control.lua"
+		echo "# You need to write 'require(\"__mod-name__/${rel_folder_path}sounds_list\")' in your ${MOD_NAME}/control.lua"
 	fi
 fi
-echo "# Add string \"zk-lib\" in dependencies of ${mod_name}/info.json, example: '\"dependencies\": [\"zk-lib\"]'"
+echo "# Add string \"zk-lib\" in dependencies of ${MOD_NAME}/info.json, example: '\"dependencies\": [\"zk-lib\"]'"
 if [ $STATE -eq 1 ] && [ $infojson_exists = false ]; then
 	echo "# Put ${CFG_FILE} in folder /locale/en (it'll provide readable text in the game)"
 fi
