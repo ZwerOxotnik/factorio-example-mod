@@ -1,46 +1,49 @@
 #!/usr/bin/env bash
+(set -o igncr) 2>/dev/null && set -o igncr; # This comment is required.
+### The above line ensures that the script can be run on Cygwin/Linux even with Windows CRNL.
 ### Generates lua and cfg files to handle .ogg sounds for Factorio
 ### Modified version of https://github.com/ZwerOxotnik/Mod-generator
 
 
-bold=$(tput bold)
-normal=$(tput sgr0)
+main() {
+local bold=$(tput bold)
+local normal=$(tput sgr0)
 
 
 ### Find info.json
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+local SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cd $SCRIPT_DIR
-infojson_exists=false
-script_file=`basename "$0"`
+local infojson_exists=false
+local script_file=`basename "$0"`
 if [[ -s "$SCRIPT_DIR/info.json" ]]; then
-    infojson_exists=true
+    local infojson_exists=true
 else
 	cd ..
 	if [[ -s "$PWD/info.json" ]]; then
-		infojson_exists=true
+		local infojson_exists=true
 	else
 		cd $SCRIPT_DIR
 	fi
 fi
-mod_folder=$PWD
+local mod_folder=$PWD
 
 
 ### Check if sox command exists
 ### https://sox.sourceforge.net/
-sox_exists=false
+local sox_exists=false
 if command -v ls &> /dev/null; then
 	sox_exists=true
 fi
 
 
-SOUNDS_LIST_FILE=sounds_list.lua
-CFG_FILE=sounds_list.cfg
+local SOUNDS_LIST_FILE=sounds_list.lua
+local CFG_FILE=sounds_list.cfg
 
 
 ### Get mod name and version from info.json
 ### https://stedolan.github.io/jq/
 if [ $infojson_exists = true ] ; then
-	MOD_NAME=$(jq -r '.name' info.json)
+	local MOD_NAME=$(jq -r '.name' info.json)
 	if ! command -v jq &> /dev/null; then
 		echo "Please install jq https://stedolan.github.io/jq/"
 	fi
@@ -50,9 +53,9 @@ fi
 echo "you're in ${bold}$mod_folder${normal}"
 
 read -r -p "Complete path to folder of sounds: $MOD_NAME/" folder_name
-folder_path=$mod_folder/$folder_name
+local folder_path=$mod_folder/$folder_name
 if [ ! -z "$folder_name" ]; then
-	rel_folder_path="${folder_name}/"
+	local rel_folder_path="${folder_name}/"
 fi
 
 read -r -p "Add sounds to programmable speakers? [Y/N] " response
@@ -67,20 +70,20 @@ esac
 if [ $STATE -eq 1 ]; then
 	read -r -p "Insert group name of sounds:" sound_group_name
 	case "$sound_group_name" in "")
-		sound_group_name=$MOD_NAME
+		local sound_group_name=$MOD_NAME
 		;;
 	esac
 fi
 
 
-SOUNDS_LIST_PATH="$folder_path/$SOUNDS_LIST_FILE"
+local SOUNDS_LIST_PATH="$folder_path/$SOUNDS_LIST_FILE"
 rm -f $SOUNDS_LIST_PATH
-CFG_FILE="generated_$sound_group_name".cfg
+local CFG_FILE="generated_$sound_group_name".cfg
 if [ $infojson_exists = true ] ; then
-	CFG_FULLPATH=$mod_folder/locale/en/$CFG_FILE
+	local CFG_FULLPATH=$mod_folder/locale/en/$CFG_FILE
 	mkdir -p $mod_folder/locale/en
 else
-	CFG_FULLPATH=$mod_folder/$CFG_FILE
+	local CFG_FULLPATH=$mod_folder/$CFG_FILE
 fi
 rm -f $CFG_FULLPATH
 
@@ -109,29 +112,29 @@ echo -e "\tsounds = {" >> $SOUNDS_LIST_PATH
 
 ###Converts audio files to .ogg format
 if [ $sox_exists = true ] ; then
-	files=($(find $folder_path/ -type f))
+	local files=($(find $folder_path/ -type f))
 	for fullpath in "${files[@]}"; do
 		### Took from https://stackoverflow.com/a/1403489
-		filename="${fullpath##*/}"                      # Strip longest match of */ from start
-		dir="${fullpath:0:${#fullpath} - ${#filename}}" # Substring from 0 thru pos of filename
-		base="${filename%.[^.]*}"                       # Strip shortest match of . plus at least one non-dot char from end
-		ext="${filename:${#base} + 1}"                  # Substring from len of base thru end
+		local filename="${fullpath##*/}"                      # Strip longest match of */ from start
+		local dir="${fullpath:0:${#fullpath} - ${#filename}}" # Substring from 0 thru pos of filename
+		local base="${filename%.[^.]*}"                       # Strip shortest match of . plus at least one non-dot char from end
+		local ext="${filename:${#base} + 1}"                  # Substring from len of base thru end
 		if [[ -z "$base" && -n "$ext" ]]; then          # If we have an extension and no base, it's really the base
-			base=".$ext"
-			ext=""
+			local base=".$ext"
+			local ext=""
 		fi
 		### It's too messy to fix
-		if ! [[ "$ext" =~ ^(|ogg|txt|lua|zip|json|cfg|md|sample|bat|sh|gitignore)$ ]]; then
+		if ! [[ "$ext" =~ ^(|ogg|txt|lua|zip|json|cfg|md|sample|bat|sh|gitignore|pack|idx|yml|png)$ ]]; then
 			sox $fullpath $dir/$base.ogg
 		fi
 	done
 fi
 
-format=*.ogg
-files=($(find $folder_path/ -name "$format" -type f))
+local format=*.ogg
+local files=($(find $folder_path/ -name "$format" -type f))
 for path in "${files[@]}"; do
-	name="$(basename -- $path)"
-	name=${name%.*}
+	local name="$(basename -- $path)"
+	local name=${name%.*}
 	echo -e "\t\t{" >> $SOUNDS_LIST_PATH
 	echo -e "\t\t\tname = \"$name\"", >> $SOUNDS_LIST_PATH
 	echo -e "\t\t}," >> $SOUNDS_LIST_PATH
@@ -149,8 +152,8 @@ echo "return sounds_list" >> $SOUNDS_LIST_PATH
 echo ""
 echo "You're almost ready!${bold}"
 
-if [ ! -s "$SCRIPT_DIR/control.lua" ] && [ $infojson_exists = true ]; then
-	echo "require(\"__${MOD_NAME}__/${rel_folder_path}sounds_list\")" >> "$SCRIPT_DIR/control.lua"
+if [ ! -s "$mod_folder/control.lua" ] && [ $infojson_exists = true ]; then
+	echo "require(\"__${MOD_NAME}__/${rel_folder_path}sounds_list\")" >> "$mod_folder/control.lua"
 else
 	if [ $infojson_exists = true ]; then
 		echo "# You need to write 'require(\"__${MOD_NAME}__/${rel_folder_path}sounds_list\")' in your ${MOD_NAME}/control.lua"
@@ -168,3 +171,5 @@ echo ""
 
 echo "if you found a bug or you have a problem with script etc, please, let me know"
 echo "This script created by ZwerOxotnik (source: https://github.com/ZwerOxotnik/Mod-generator)"
+}
+main

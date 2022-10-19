@@ -1,19 +1,21 @@
 #!/usr/bin/env bash
+(set -o igncr) 2>/dev/null && set -o igncr; # This comment is required.
+### The above line ensures that the script can be run on Cygwin/Linux even with Windows CRNL.
 ### Run this script after updating the mod to prepare a zip of it.
 
-
+main() {
 ### Check commands
 if ! command -v git &> /dev/null; then
 	echo "Please install/use git https://git-scm.com/downloads"
 fi
-has_errors=false
+local has_errors=false
 if ! command -v jq &> /dev/null; then
 	echo "Please install jq https://stedolan.github.io/jq/"
-	has_errors=true
+	local has_errors=true
 fi
 if ! command -v 7z &> /dev/null; then
 	echo "Please install 7-Zip https://www.7-zip.org/download.html"
-	has_errors=true
+	local has_errors=true
 fi
 if [ $has_errors = true ] ; then
 	exit 1
@@ -21,12 +23,12 @@ fi
 
 
 ### mod_folder is a mod directory with info.json
-init_dir=`pwd`
+local init_dir=`pwd`
 
 
 ### Find info.json
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-infojson_exists=false
+local SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+local infojson_exists=false
 if [[ -s "$SCRIPT_DIR/info.json" ]]; then
 	infojson_exists=true
 	mod_folder=$SCRIPT_DIR
@@ -53,8 +55,8 @@ echo "Target folder: ${mod_folder}"
 
 ### Get mod name and version from info.json
 ### https://stedolan.github.io/jq/
-MOD_NAME=$(jq -r '.name' info.json)
-MOD_VERSION=$(jq -r '.version' info.json)
+local MOD_NAME=$(jq -r '.name' info.json)
+local MOD_VERSION=$(jq -r '.version' info.json)
 
 
 # Validate the version string we're building
@@ -66,8 +68,10 @@ fi
 
 ### Prepare zip for Factorio native use and mod portal
 ### https://www.7-zip.org/download.html
-name="${MOD_NAME}_${MOD_VERSION}"
+local name="${MOD_NAME}_${MOD_VERSION}"
 if command -v git &> /dev/null; then
 	git clean -xdf
 fi
 7z a -xr'!.*' "${mod_folder}/${name}.zip" "${mod_folder}"
+}
+main
