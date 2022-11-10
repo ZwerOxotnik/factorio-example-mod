@@ -131,6 +131,8 @@ Notes
 * I recommend to use [notepad++](https://notepad-plus-plus.org) when you work with data and [notepad2](https://github.com/zufuliu/notepad2) for hot fixes. For all other cases use any IDE or code editor (e.g.: [Visual Studio Code](https://code.visualstudio.com/))
 * You can store data in entities to support data in blueprints (see an example in [LuaCombinator 3](https://mods.factorio.com/mod/LuaCombinator3))
 * Don't add many GUIs at control stage. Factorio's GUI has the highest impact on FPS.
+* In Factorio, pairs() *always* iterates numerical keys 1-1024 in order (I didn't check it though)
+* In Factorio 1.1.71, pairs() should be more or always determinitstic ([source](https://discord.com/channels/139677590393716737/306402592265732098/1039966592219480124))
 
 Next updates
 ------------
