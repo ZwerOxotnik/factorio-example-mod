@@ -30,4 +30,4 @@ end
 game.player.surface.set_tiles(tiles, false, false, false)
 ```
 
-So could use it with [surface.clone_area()](https://lua-api.factorio.com/latest/LuaSurface.html#LuaSurface.clone_area) to make things even faster (it takes time a lot of time).
+So could use it with [surface.clone_area()](https://lua-api.factorio.com/latest/LuaSurface.html#LuaSurface.clone_area) to make things even faster (it takes a lot of time).
