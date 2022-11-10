@@ -1,4 +1,17 @@
-This is faster than
+## Please, always do this:
+```lua
+local DESTROY_SETTINGS = {raise_destroy=true}
+entity.destroy(DESTROY_SETTINGS)
+```
+## Instead of this:
+```lua
+entity.destroy()
+```
+Otherwise, you'll break many mods.
+
+#
+
+## This is faster than
 ```lua
 /measured-command
 local tiles = {}
@@ -16,7 +29,7 @@ end
 game.player.surface.set_tiles(tiles, false, false, false)
 ```
 
-this
+## this
 ```lua
 /measured-command
 local tiles = {}
