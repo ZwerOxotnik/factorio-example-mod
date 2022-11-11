@@ -17,7 +17,8 @@ for _, player in pairs(game.players) do
 				target = player
 				target_name = character.name
 			end
-			local non_colliding_position = surface.find_non_colliding_position(target_name, target_position, 1000, 1)
+			local radius = 200
+			local non_colliding_position = surface.find_non_colliding_position(target_name, target_position, radius, 1)
 
 			if non_colliding_position then
 				target.teleport(non_colliding_position, surface)
