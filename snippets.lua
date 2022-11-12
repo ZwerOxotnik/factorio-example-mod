@@ -10,7 +10,7 @@ for _, player in pairs(game.players) do
 			local target
 			local vehicle = player.vehicle
 			local target_name
-			if vehicle and not vehicle.train then
+			if vehicle and not vehicle.train and vehicle.get_driver() == character and vehicle.get_passenger() == nil then
 				target = vehicle
 				target_name = vehicle.name
 			else
