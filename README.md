@@ -63,8 +63,7 @@ What it can do
 * Use built-in error handling of commands
 * Use modular structure
 * Remotely and safely disable your mod
-* Publish your mod on mod portal via GitHub tags
-* Auto publishing on [mods.portal.com](https://mods.factorio.com/) and on GitHub
+* Auto publishing on [mods.portal.com](https://mods.factorio.com/) and on your GitHub repository
 
 What it enables you to do
 -------------------------
