@@ -81,9 +81,10 @@ What it enables you to do
 Useful stuff
 ------------
 
+* [Lua 5.2 Reference Manual](https://www.lua.org/manual/5.2/), [Introduction to Lua by Dibyendu Majumdar](https://the-ravi-programming-language.readthedocs.io/en/latest/lua-introduction.html)
 * Factorio modding: https://wiki.factorio.com/Modding
 * GitHub service for localization via crowdin: https://github.com/dima74/factorio-mods-localization
-* Optimisation tips: https://stigmax.gitbook.io/lua-guide/auxiliary/optimizations & http://lua-users.org/wiki/OptimisationTips & https://springrts.com/wiki/Lua_Performance & https://www.lua.org/gems/sample.pdf & [tips](https://stackoverflow.com/questions/154672/what-can-i-do-to-increase-the-performance-of-a-lua-program) & [tips](https://www.programmersought.com/article/62883257108/) (please, notice that Factorio uses Lua [5.2.1](https://lua-api.factorio.com/latest/Libraries.html), so some tips might be **irrelevant** for Factorio mods!) & [Performance Comparison](https://eklausmeier.wordpress.com/2020/05/14/performance-comparison-pallene-vs-lua-5-1-5-2-5-3-5-4-vs-c/) & https://gitspartv.github.io/LuaJIT-Benchmarks/
+* Optimisation tips: https://stigmax.gitbook.io/lua-guide/auxiliary/optimizations & http://lua-users.org/wiki/OptimisationTips & https://springrts.com/wiki/Lua_Performance & https://www.lua.org/gems/sample.pdf & [tips](https://stackoverflow.com/questions/154672/what-can-i-do-to-increase-the-performance-of-a-lua-program) & [tips](https://www.programmersought.com/article/62883257108/) (please, notice that Factorio uses modified version of Lua [5.2.1](https://lua-api.factorio.com/latest/Libraries.html), so some tips might be **irrelevant** etc. for Factorio mods!) & [Performance Comparison](https://eklausmeier.wordpress.com/2020/05/14/performance-comparison-pallene-vs-lua-5-1-5-2-5-3-5-4-vs-c/) & https://gitspartv.github.io/LuaJIT-Benchmarks/
 * EmmyLua Annotations: [lua-language-server/wiki/EmmyLua-Annotations][EmmyLua-Annotations]
 * Untitled GUI Guide: https://github.com/ClaudeMetz/UntitledGuiGuide/wiki (comprehensive tutorial on building custom interfaces)
 * Code Completion for jetbrains IDEs: https://forums.factorio.com/viewtopic.php?f=135&p=567132
@@ -188,7 +189,7 @@ License
 
 I'm interested in distributing code as freely as possible.
 
-Copyright (c) 2021-2022 ZwerOxotnik <zweroxotnik@gmail.com>
+Copyright (c) 2021-2023 ZwerOxotnik <zweroxotnik@gmail.com>
 
 Licensed under the [MIT licence](https://tldrlegal.com/license/mit-license).
 
