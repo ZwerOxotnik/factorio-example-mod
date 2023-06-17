@@ -35,12 +35,12 @@ end
 local event_handler
 if script.active_mods["zk-lib"] then
 	-- Same as Factorio "event_handler", but slightly better performance
-	event_handler = require("__zk-lib__/static-libs/lualibs/event_handler_vZO.lua")
-else
-	event_handler = require("event_handler")
+	local is_ok, zk_event_handler = pcall(require, "__zk-lib__/static-libs/lualibs/event_handler_vZO.lua")
+	if is_ok then
+		event_handler = zk_event_handler
+	end
 end
-
-event_handler.add_libraries(modules)
+event_handler = event_handler or require("event_handler")
 
 
 -- This is a part of "gvv", "Lua API global Variable Viewer" mod. https://mods.factorio.com/mod/gvv
