@@ -41,6 +41,7 @@ if script.active_mods["zk-lib"] then
 	end
 end
 event_handler = event_handler or require("event_handler")
+event_handler.add_libraries(modules)
 
 
 -- This is a part of "gvv", "Lua API global Variable Viewer" mod. https://mods.factorio.com/mod/gvv
