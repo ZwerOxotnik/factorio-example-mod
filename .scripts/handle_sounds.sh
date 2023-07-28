@@ -145,7 +145,11 @@ done
 echo -e "\t}" >> $SOUNDS_LIST_PATH
 echo "}" >> $SOUNDS_LIST_PATH
 echo "" >> $SOUNDS_LIST_PATH
-echo if "puan_api then puan_api.add_sounds(sounds_list) end" >> $SOUNDS_LIST_PATH
+echo "if puan2_api then" >> $SOUNDS_LIST_PATH
+echo "	puan2_api.add_sounds(sounds_list)" >> $SOUNDS_LIST_PATH
+echo "elseif puan_api then" >> $SOUNDS_LIST_PATH
+echo "	puan_api.add_sounds(sounds_list)" >> $SOUNDS_LIST_PATH
+echo "end" >> $SOUNDS_LIST_PATH
 echo "" >> $SOUNDS_LIST_PATH
 echo "return sounds_list" >> $SOUNDS_LIST_PATH
 
