@@ -58,18 +58,19 @@ What it can do
 --------------
 
 * Filter parameters of commands
-* Add switchable commands via map settings
+* Add switchable, customizable commands via map settings
 * Double check of commands
 * Use built-in error handling of commands
 * Use modular structure
 * Remotely and safely disable your mod
+* Auto adds remote access for rcon and for other mods/scenarios
 * Auto publishing on [mods.portal.com](https://mods.factorio.com/) and on your GitHub repository
 
 What it enables you to do
 -------------------------
 
 * Handle sounds by a [script](.scripts/handle_sounds.sh)
-* Make switchable, simpler and safer [commands](models/BetterCommands/README.md)
+* Make switchable, simpler and safer [commands](https://github.com/ZwerOxotnik/factorio-BetterCommands)
 * Make "isolated" modules
 * Expand your modules
 * More possibilities to control logic
@@ -120,7 +121,6 @@ How to start?
 * **Change or delete** .github/ISSUE_TEMPLATE/*
 * **Change or delete** .github/workflows/* (please read [this](https://github.com/shanemadden/factorio-mod-portal-publish))
 * Handle files in [control.lua](control.lua)
-* Change settings in [models/BetterCommands/control.lua](models/BetterCommands/control.lua) if you want
 
 Notes
 -----
@@ -159,7 +159,7 @@ sudo apt install p7zip-full jq git -y
 Optional Dependencies
 ---------------------
 
-* <a href="github.com/ZwerOxotnik/zk-lib" target="_blank"><code>zk-lib</code></a> - for localization of [BetterCommands](models/BetterCommands/control.lua) and [event handler](/control.lua), currently
+* <a href="github.com/ZwerOxotnik/zk-lib" target="_blank"><code>zk-lib</code></a> - for localization of [event handler](/control.lua), currently
 
 ‼️ Important Links (Translations, Discord Support)
 ---------------------------------------------------------------

@@ -1,5 +1,5 @@
 --[[
-	This is just a particular example, not a guide. You don't have to follow this example forever!
+	This is just a particular example, not a guide. You don't have to follow this example at all!
 
 	We gonna use https://lua-api.factorio.com/latest/Global.html to store data and some local table for singleplayer in some cases.
 
@@ -22,13 +22,14 @@ local M = {}
 
 --#region Singleplayer data
 -- Usually, some tables here (it's like a mirror of global data for singleplayer)
-local sp_player_data = {}
+local __sp_player_data = {}
 --#endregion
 
 
 --#region Global data
-local players_data
+local _players_data
 --#endregion
+
 
 --#region Functions of events
 
@@ -39,12 +40,12 @@ local function on_player_joined_game(event)
 
 	-- Trying to simulate "loaded" game without this mod (otherwise I have to tell you about other cases)
 	if game.is_multiplayer() then
-		players_data[player_index] = {}
+		_players_data[player_index] = {}
 	end
 end
 
 local function delete_player_data(event)
-	players_data[event.player_index] = nil
+	_players_data[event.player_index] = nil
 end
 
 local function on_cancelled_deconstruction(event)
@@ -52,13 +53,13 @@ local function on_cancelled_deconstruction(event)
 	local player = game.get_player(player_index)
 	if not (player and player.valid) then return end
 
-	local data = players_data[player_index] or sp_player_data
+	local data = _players_data[player_index] or __sp_player_data
 	-- You might get rid of second variable but, sometimes, it'll lead to more complex code or less performance
 
 	data[#data] = math.random(100) -- it's safe to generate random numbers in multiplayer
 	player.print("Data: " .. serpent.line(data))
 	-- Let's check the result
-	if players_data[player_index] == nil then
+	if _players_data[player_index] == nil then
 		player.print("Nothing in global data for player, using \"singleplayer\" data")
 	else
 		player.print("Using global to store the data")
@@ -72,7 +73,7 @@ end
 
 -- You might get rid of this, but it's convenient to have and use
 local function link_data()
-	players_data = global.players
+	_players_data = global.players
 end
 
 local function update_global_data()

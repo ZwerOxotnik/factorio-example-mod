@@ -4,7 +4,7 @@ local M = {}
 
 
 --#region Global data
-local players_data
+local _players_data
 --#endregion
 
 
@@ -85,7 +85,7 @@ end
 --#region Pre-game stage
 
 local function link_data()
-	players_data = global.players
+	_players_data = global.players
 end
 
 local function update_global_data()

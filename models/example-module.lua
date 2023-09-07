@@ -9,7 +9,7 @@ local custom_events = {
 }
 
 --#region Global data
-local players_data
+local _players_data
 --#endregion
 
 
@@ -95,7 +95,7 @@ remote.add_interface("example-mod", interface)
 
 
 local function link_data()
-	players_data = global.players
+	_players_data = global.players
 end
 
 local function update_global_data()
