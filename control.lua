@@ -40,7 +40,10 @@ if remote.interfaces["disable-" .. script.mod_name] then
 else
 	if modules.better_commands then
 		if modules.better_commands.handle_custom_commands then
-			modules.better_commands.handle_custom_commands(modules.example_module) -- adds commands
+			-- Adds commands
+			for _, module in pairs(modules) do
+				modules.better_commands.handle_custom_commands(module)
+			end
 		end
 		if modules.better_commands.expose_global_data then
 			modules.better_commands.expose_global_data()
