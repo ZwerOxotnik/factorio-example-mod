@@ -128,7 +128,7 @@ Notes
 * There are mods/tools that might help you (e.g.: [Factorio Library](https://mods.factorio.com/mod/flib), [Rusty's Locale Utilities](https://mods.factorio.com/mod/rusty-locale), [Big Data String Libary](https://mods.factorio.com/mod/big-data-string), [Brush tools](https://mods.factorio.com/mod/brush-tools), [Mod generator](https://github.com/ZwerOxotnik/Mod-generator) etc)
 * Don't restart your game if you've changed files for control stage
 * If you want to develop complex/big project then you'll probably try [Factorio-luacheckrc](https://github.com/Nexela/Factorio-luacheckrc) with a [GitHub action][factorio-mod-luacheck] but you have to mantain .luacheckrc file
-* I recommend to use [notepad++](https://notepad-plus-plus.org) when you work with data and [notepad2](https://github.com/zufuliu/notepad2) for hot fixes. For all other cases use any IDE or code editor (e.g.: [Visual Studio Code](https://vscodium.com/), [Kate](https://kate-editor.org/), [Neovim](https://neovim.io/))
+* I recommend to use [notepad++](https://notepad-plus-plus.org) when you work with data and [notepad2](https://github.com/zufuliu/notepad2) for hot fixes. For all other cases use any IDE or code editor (e.g.: [VSCodium](https://vscodium.com/), [Kate](https://kate-editor.org/), [Neovim](https://neovim.io/))
 * You can store data in entities to support data in blueprints (see an example in [LuaCombinator 3](https://mods.factorio.com/mod/LuaCombinator3))
 * Don't add many GUIs at control stage. Factorio's GUI has the highest impact on FPS.
 * In Factorio, pairs() *always* iterates numerical keys 1-1024 in order (I didn't check it though)
